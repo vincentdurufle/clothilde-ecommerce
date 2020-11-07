@@ -1,0 +1,50 @@
+// THEME COLORS
+$gray: #9fa1a4;
+$medium-gray: #a0a7b1;
+$light-gray: #e0dfe7;
+$lavender: #efeff0;
+$gainsboro: #ededed;
+$black: #000;
+$white: #fff;
+$fb-color: #3e7ab6;
+$fb-color-hover: #6696c6;
+$alert-danger: #f8d7da;
+
+// Bootstrap
+$dark: $gray;
+$light: $gainsboro;
+//$font-family-base: GillSansMTStd-Medium, GillSans, Calibri, sans-serif;
+//$font-family-light: GillSansMTStd-Light, GillSans, Calibri, sans-serif;
+//$font-family-text: GillSansMTStd-Book, GillSans, Calibri, sans-serif;
+$font-size-base: .8rem;
+$h1-font-size: 1.1rem;
+$h2-font-size: 1rem;
+$h3-font-size: .9rem;
+$primary: $gainsboro;
+$secondary: $lavender;
+$body-color: $black;
+$enable-rounded: false;
+$card-border-width: 0;
+$breadcrumb-divider: quote('>');
+$border-radius: 0;
+$link-color: $black;
+$dropdown-font-size: .7rem;
+$border-color: $lavender;
+$component-active-color: $black;
+$btn-link-disabled-color: $gainsboro;
+$input-bg: $white;
+$input-disabled-bg: $gainsboro;
+$input-color: $black;
+$input-border-color: $lavender;
+$input-placeholder-color: $gray;
+$input-group-addon-bg: $lavender;
+$input-focus-border-color: $gray;
+
+//Bootstrap.nav
+$nav-tabs-border-color: $lavender;
+$nav-tabs-border-width: 1px;
+$nav-tabs-link-hover-border-color: $lavender;
+$nav-tabs-link-active-color: $black;
+$nav-tabs-link-active-bg: $lavender;
+$nav-tabs-link-active-border-color: $lavender;
+$nav-tabs-link-color: $gray;

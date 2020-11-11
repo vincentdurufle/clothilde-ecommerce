@@ -1,0 +1,84 @@
+@import './variables';
+@import './components/full-page-scroll.min.css';
+
+.one-page-scroll-container {
+  width: 100%;
+  height: 100vh;
+}
+
+.hero-container,
+.last-project-container {
+  min-height: 100%;
+}
+
+.hero-container {
+  position: relative;
+  svg {
+    position: absolute;
+    top: 40%;
+    left: 0;
+    z-index: 9;
+  }
+  .background {
+    z-index: 8;
+    width: 60%;
+    background-color: $pink;
+    height: 30%;
+    position: absolute;
+    top: 60%;
+    left: 5%;
+    transform: translate(0%, -50%);
+  }
+  .name-title {
+    z-index: 10;
+    position: absolute;
+    top: 40%;
+    left: 10%;
+    transform: translate(0%, -50%);
+    font-size: 5rem;
+    color: $white;
+  }
+  .arrow-link {
+    position: absolute;
+    bottom: 5%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    animation: arrow-move 1.5s linear 0s infinite;
+    i {
+      color: $primary;
+      font-size: 4rem;
+    }
+  }
+}
+
+.last-project-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .project-title {
+    color: $white;
+  }
+}
+
+.dots li a.active:before,
+.dots li a:before {
+  background-color: $primary;
+}
+
+@keyframes arrow-move {
+  0% {
+    bottom: 5%;
+  }
+  25% {
+    bottom: 6%;
+  }
+  50% {
+    bottom: 5%;
+  }
+  75% {
+    bottom: 4%;
+  }
+  100% {
+    bottom: 5%;
+  }
+}

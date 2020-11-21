@@ -8,7 +8,7 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item {{ 'homepage' in app.request.get('_route') ? 'active' }}">
-                <a class="nav-link" href="#">{{ 'header.home'|trans }}</a>
+                <a class="nav-link" href="{{ path('homepage_index') }}">{{ 'header.home'|trans }}</a>
             </li>
             <li class="nav-item {{ 'shop' in app.request.get('_route') ? 'active' }}">
                 <a class="nav-link" href="#">{{ 'header.shop'|trans }}</a>

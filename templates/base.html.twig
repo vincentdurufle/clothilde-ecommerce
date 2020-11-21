@@ -11,10 +11,9 @@
     </head>
     <body>
         <main>
+            {% include 'components/_header.html.twig' %}
             <div class="content">
-                {% block body %}
-
-                {% endblock %}
+                {% block body %}{% endblock %}
             </div>
         </main>
         {% block javascripts %}

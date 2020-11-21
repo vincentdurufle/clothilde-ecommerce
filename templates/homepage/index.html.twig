@@ -1,13 +1,41 @@
 {% extends 'base.html.twig' %}
+{% trans_default_domain 'app' %}
 
 {% block stylesheets %}
+    {{ parent() }}
     {{ encore_entry_link_tags('homepage') }}
 {% endblock %}
 
 {% block body %}
+    <div class="one-page-scroll-container" id="scroll-container">
+        <section class="hero-container row no-gutters">
+            <div class="hero left col-6">
+                <h1 class="name-title">Clotilde <br> Puy</h1>
+                <h2 class="hero-description">{{ 'homepage.hero.description'|trans }}</h2>
+            </div>
+            <div class="right col-6">
+                <div class="square">
+                    <img class="layer" data-depth="0.1" src="{{ asset('img/tapis-hero-deskew.png') }}" alt="">
+                </div>
+            </div>
+            <a href="#1" class="arrow-link">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </section>
+        <section class="last-project-container row no-gutters">
+            <div class="left col-6">
 
+            </div>
+            <div class="right col-6">
+                <div class="description">
+                    <h3>{{ 'homepage.project.description'|trans }}</h3>
+                </div>
+            </div>
+        </section>
+    </div>
 {% endblock %}
 
 {% block javascripts %}
+    {{ parent() }}
     {{ encore_entry_script_tags('homepage') }}
 {% endblock %}

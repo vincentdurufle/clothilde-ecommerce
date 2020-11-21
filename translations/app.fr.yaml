@@ -1,0 +1,11 @@
+header:
+  home: Accueil
+  shop: Boutique
+  portfolio: Portfolio
+  about: A propos
+
+homepage:
+  hero:
+    description: Tissage et tuftage fait main en France
+  project:
+    description: Clotilde Puy propose des objets et des tissus de décoration d'intérieur uniques et sur-mesure. Depuis son atelier parisien, elle utilise les techniques du tissage et du tuftage pour des créations à l'esthétique colorée directement inspirée de la pop culture japonaise.

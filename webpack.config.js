@@ -28,8 +28,7 @@ Encore
      */
     .addEntry('app', './assets/js/app.js')
     .addEntry('homepage', './assets/js/homepage.js')
-    //.addEntry('page1', './assets/page1.js')
-    //.addEntry('page2', './assets/page2.js')
+    .addEntry('admin_index', './assets/js/admin_index.js')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()

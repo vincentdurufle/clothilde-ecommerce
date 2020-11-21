@@ -11,6 +11,7 @@ $green: #a8d39e;
 //#95B1AF
 //$pink: #e677ac;
 $pink: #F9D4DF;
+$shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 
 // Bootstrap
 $dark: $gray;
@@ -22,7 +23,7 @@ $h1-font-size: 1.1rem;
 $h2-font-size: 1rem;
 $h3-font-size: .9rem;
 $primary: $blue;
-$secondary: $green;
+$secondary: $pink;
 $body-color: $black;
 //$enable-rounded: false;
 $card-border-width: 0;

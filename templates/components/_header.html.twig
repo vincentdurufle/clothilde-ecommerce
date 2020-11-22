@@ -1,11 +1,11 @@
 {% trans_default_domain 'app' %}
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+    <div class="collapse navbar-collapse" id="navbarToggler">
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item {{ 'homepage' in app.request.get('_route') ? 'active' }}">
                 <a class="nav-link" href="{{ path('homepage_index') }}">{{ 'header.home'|trans }}</a>
@@ -13,12 +13,20 @@
             <li class="nav-item {{ 'shop' in app.request.get('_route') ? 'active' }}">
                 <a class="nav-link" href="#">{{ 'header.shop'|trans }}</a>
             </li>
-            <li class="nav-item {{ 'portfolio' in app.request.get('_route') ? 'active' }}">
-                <a class="nav-link" href="#">{{ 'header.portfolio'|trans }}</a>
-            </li>
-            <li class="nav-item {{ 'about' in app.request.get('_route') ? 'active' }}">
-                <a class="nav-link" href="#">{{ 'header.about'|trans }}</a>
-            </li>
+{#            <li class="nav-item {{ 'portfolio' in app.request.get('_route') ? 'active' }}">#}
+{#                <a class="nav-link" href="#">{{ 'header.portfolio'|trans }}</a>#}
+{#            </li>#}
+{#            <li class="nav-item {{ 'about' in app.request.get('_route') ? 'active' }}">#}
+{#                <a class="nav-link" href="#">{{ 'header.about'|trans }}</a>#}
+{#            </li>#}
+            {% if is_granted('ROLE_ADMIN') %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('admin_index') }}">Admin</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_logout') }}">Logout</a>
+                </li>
+            {% endif %}
         </ul>
     </div>
 </nav>

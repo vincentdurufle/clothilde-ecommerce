@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain 'app' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('index_items') }}
+{% endblock %}
+
+{% block body %}
+    {% if items is not empty %}
+        {% for item in items %}
+             <div class="item">
+                 <div class="card">
+                     <img src="{{ vich_uploader_asset(item, 'coverFile') }}" alt="" class="card-img-top">
+                     <div class="card-body">
+                         <h5 class="card-title">{{ item.name }}</h5>
+                         <div class="btn-group">
+                             <a href="{{ path('item_edit', {'slug': item.slug}) }}" class="btn btn-primary">Edit</a>
+                             <a href="{{ path('item_delete', {'slug': item.slug}) }}" class="btn btn-danger delete">Delete</a>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('index_items') }}
+{% endblock %}

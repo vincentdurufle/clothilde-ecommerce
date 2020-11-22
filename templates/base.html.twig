@@ -13,6 +13,13 @@
         <main>
             {% include 'components/_header.html.twig' %}
             <div class="content">
+                {% for label, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="alert-{{ label }} alert">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
                 {% block body %}{% endblock %}
             </div>
         </main>

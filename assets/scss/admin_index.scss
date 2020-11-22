@@ -8,13 +8,15 @@
   align-items: center;
   .menu {
     width: 60%;
-    padding: 2rem;
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
-    box-shadow: $shadow;
+    box-shadow: $light-shadow;
+    border-radius: .25rem;
+    border: 2px solid $primary;
     a {
       color: $white;
-      font-size: 2rem;
+      font-size: 1rem;
       text-transform: uppercase;
       margin: 1rem;
     }

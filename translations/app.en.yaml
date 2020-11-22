@@ -9,7 +9,9 @@ homepage:
     description: Weaving and tufting made in France
   project:
     description: Clotilde Puy is based in Paris. She creates unique and handmade interior objects. She uses weaving and tufting to produce colorful pieces inspired by japanese pop culture.
-
+  latest: Latest creation
+  btn:
+    shop: Buy now
 
 admin:
   menu:

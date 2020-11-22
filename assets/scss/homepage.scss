@@ -1,6 +1,10 @@
 @import './variables';
 @import './components/full-page-scroll.min.css';
 
+.content {
+  padding: 0;
+}
+
 .one-page-scroll-container {
   width: 100%;
   height: 100vh;
@@ -40,10 +44,10 @@
     padding-left: 10%;
     .name-title {
       text-transform: uppercase;
-      font-size: 8rem;
+      font-size: 5rem;
     }
     .hero-description {
-      font-size: 3rem;
+      font-size: 2rem;
     }
   }
 
@@ -56,7 +60,7 @@
 
     i {
       color: $primary;
-      font-size: 4rem;
+      font-size: 2rem;
     }
   }
 }
@@ -68,7 +72,27 @@
   background-color: $secondary;
 
   .left {
-
+    .item {
+      background-color: rgba(0, 0, 0, .05);
+      padding: 2rem;
+      border-radius: .25rem;
+      display: flex;
+      flex-direction: column;
+      width: 80%;
+      margin: auto;
+      .title {
+        color: $white;
+        text-transform: uppercase;
+      }
+      img {
+        width: 80%;
+        margin: auto;
+        filter: drop-shadow(1px 1px 5px black);
+      }
+      .shop-item {
+        text-transform: uppercase;
+      }
+    }
   }
 
   .right {
@@ -78,8 +102,8 @@
     .description {
       width: 80%;
       h3 {
-                           color: $white;
-        font-size: 3rem;
+        color: $white;
+        font-size: 2rem;
         text-transform: uppercase;
       }
     }

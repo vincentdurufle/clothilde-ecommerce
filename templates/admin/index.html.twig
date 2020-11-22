@@ -9,8 +9,8 @@
 {% block body %}
     <div class="container">
         <div class="menu">
-            <a class="btn btn-lg btn-primary" href="">{{ 'admin.menu.see_all'|trans }}</a>
-            <a class="btn btn-lg btn-primary" href="">{{ 'admin.menu.add_item'|trans }}</a>
+            <a class="btn btn-lg btn-primary" href="{{ path('items_add') }}">{{ 'admin.menu.add_item'|trans }}</a>
+            <a class="btn btn-lg btn-primary" href="{{ path('items_index') }}">{{ 'admin.menu.see_all'|trans }}</a>
             <a class="btn btn-lg btn-primary" href="">{{ 'admin.menu.invoices'|trans }}</a>
         </div>
     </div>

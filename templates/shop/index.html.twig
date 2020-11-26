@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain 'app' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('shop_index') }}
+{% endblock %}
+
+{% block body %}
+    <div class="item-container">
+        {% for item in items %}
+            <div class="item">
+                <a href="{{ path('shop_item_show', {'slug': item.slug}) }}">
+                    <h2 class="title">{{ item.name }}</h2>
+                    <img src="{{ vich_uploader_asset(item, 'coverFile') | imagine_filter('cover') }}"
+                         alt="{{ item.name }}">
+                    <div class="price-container">
+                        <span class="price">{{ item.price|format_currency('EUR') }}</span>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('shop_index') }}
+{% endblock %}

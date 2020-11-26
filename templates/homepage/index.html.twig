@@ -27,7 +27,7 @@
                 <div class="item">
                     <h2 class="title">{{ 'homepage.latest'|trans }}</h2>
                     <h3 class="item-title">{{ item.name }}</h3>
-                    <img src="{{ vich_uploader_asset(item, 'coverFile') }}" alt="">
+                    <img src="{{ vich_uploader_asset(item, 'coverFile') | imagine_filter('cover') }}" alt="">
                     <a href="" class="shop-item btn btn-light btn-lg">{{ 'homepage.btn.shop'|trans }}</a>
                 </div>
             </div>

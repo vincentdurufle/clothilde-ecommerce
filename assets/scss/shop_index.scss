@@ -1,0 +1,73 @@
+@import './variables';
+@import '~bootstrap/scss/bootstrap-grid';
+
+.content {
+  justify-content: flex-start;
+  .item-container {
+    margin: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+    .item {
+      @extend .col-lg-3;
+      @extend .col-md-4;
+      @extend .col-sm-6;
+      @extend .col;
+      width: calc(20% - 1rem);
+      margin: 1rem;
+      box-shadow: $light-shadow;
+      padding: 1rem;
+      position: relative;
+      transition: .5s;
+      .price-container:hover {
+        background-color: $primary;
+        .price {
+          animation: price .5s ease-in-out;
+          bottom: 50%;
+          right: 50%;
+          opacity: 1;
+          transition: 0s .5s;
+        }
+      }
+      img {
+        object-fit: contain;
+        width: 100%;
+      }
+      .price-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        transition: .5s;
+        .price {
+          color: $white;
+          opacity: 0;
+          position: absolute;
+          transform: translate(50%, 50%);
+          font-weight: bold;
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+@keyframes price {
+  from {
+    bottom: 5%;
+    right: 5%;
+  }
+  to {
+    bottom: 50%;
+    right: 50%;
+    opacity: 1;
+  }
+}

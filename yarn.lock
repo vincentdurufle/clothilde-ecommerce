@@ -4104,6 +4104,11 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.10.0"
 
+keen-slider@^5.3.5:
+  version "5.3.5"
+  resolved "https://registry.yarnpkg.com/keen-slider/-/keen-slider-5.3.5.tgz#29ac24fd7dbf1f1435bd448e0e583cded36b4b91"
+  integrity sha512-3QYvrFK7HbtkiC98/G+RM44y9WBe9cpHDHtP9bI1J/Vrc54IHLuTjOjyX4E81ukRc5GwiGfijOwStxEhisFnPg==
+
 killable@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/killable/-/killable-1.0.1.tgz#4c8ce441187a061c7474fb87ca08e2a638194892"

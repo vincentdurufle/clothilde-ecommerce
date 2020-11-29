@@ -7,6 +7,12 @@
 {% endblock %}
 
 {% block body %}
+    <div class="top-img">
+        <img src="{{ asset('img/shop-header.jpg') }}" alt="Clotilde puy works">
+        <div class="title-container">
+            <h1 class="title">{{ 'header.shop'|trans }}</h1>
+        </div>
+    </div>
     <div class="item-container">
         {% for item in items %}
             <div class="item">

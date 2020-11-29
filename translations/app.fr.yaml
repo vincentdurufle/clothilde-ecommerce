@@ -12,3 +12,22 @@ homepage:
   latest: Dernière création
   btn:
     shop: Acheter
+
+item:
+  type:
+    mural_decoration: Décoration mural
+    pillow: Coussin
+    carpet: Tapis
+    other: Autre
+  composition: "Composition:"
+  size: "Taille:"
+  price: "Prix:"
+
+btn:
+  buy: Acheter
+
+order:
+  success:
+    title: Merci pour votre commande !
+    mail: Un email va vous être envoyé dans quelques instant pour récapituler votre commande.
+    mail_error: "Pour toute question merci d'envoyer un mail à: "

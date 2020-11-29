@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain 'app' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('item_show') }}
+{% endblock %}
+
+{% block body %}
+    <div class="item-container">
+        <div class="title-container">
+            <h1 class="title">{{ item.name }}</h1>
+        </div>
+        <div class="row no-gutters">
+            <div class="left">
+                <div class="navigation-wrapper">
+                    <div id="keen-slider" class="keen-slider">
+                        <div class="keen-slider__slide number-slide1">
+                            <img src="{{ vich_uploader_asset(item, 'coverFile') | imagine_filter('slide') }}"
+                                 alt="{{ item.name }} cover">
+                        </div>
+                        {% for slider in item.images %}
+                            <div class="keen-slider__slide number-slide{{ loop.index + 1 }}">
+                                <img src="{{ vich_uploader_asset(slider, 'imageFile') | imagine_filter('slide') }}"
+                                     alt="{{ item.name }} image">
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <span id="arrow-left" class="arrow arrow--left">
+                        <i class="fas fa-chevron-left fa-2x"></i>
+                    </span>
+                    <span id="arrow-right" class="arrow arrow--right">
+                        <i class="fas fa-chevron-right fa-2x"></i>
+                    </span>
+                </div>
+                <div id="dots" class="dots"></div>
+            </div>
+            <div class="right">
+                <p class="description">{{ item.descriptionEn }}</p>
+                <div class="info">
+                    <ul>
+                        {% if item.compositionEn %}
+                            <li>
+                                <span class="info-title">{{ 'item.composition'|trans }}</span>
+                                <p class="composition">{{ item.compositionEn }}</p>
+                            </li>
+                        {% endif %}
+                        {% if item.size %}
+                            <li>
+                                <span class="info-title">{{ 'item.size'|trans }}</span>
+                                <p class="size">{{ item.size }}</p>
+                            </li>
+                        {% endif %}
+                        <li>
+                            <span class="info-title">{{ 'item.price'|trans }}</span>
+                            <span class="price">{{ item.price|format_currency('EUR') }}</span>
+                        </li>
+                    </ul>
+                </div>
+                <button id="checkout-button" class="buy btn btn-lg btn-secondary"
+                        data-href="{{ path('checkout_session', {'slug': item.slug}) }}"
+                        data-stripe="{{ stripe_public_key }}"
+                >
+                    {{ 'btn.buy'|trans }}
+                </button>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('item_show') }}
+{% endblock %}

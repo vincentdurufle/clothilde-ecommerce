@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ItemRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\HttpFoundation\File\File;
@@ -98,10 +100,16 @@ class Item
      */
     private $composition_fr;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="item", cascade={"persist"})
+     */
+    private $images;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime('now');
         $this->sold = false;
+        $this->images = new ArrayCollection();
     }
 
     public function setCoverFile(File $cover = null): void
@@ -290,6 +298,36 @@ class Item
     public function setCompositionFr(?string $composition_fr): self
     {
         $this->composition_fr = $composition_fr;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Image[]
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(Image $image): self
+    {
+        if (!$this->images->contains($image)) {
+            $this->images[] = $image;
+            $image->setItem($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Image $image): self
+    {
+        if ($this->images->removeElement($image)) {
+            // set the owning side to null (unless already changed)
+            if ($image->getItem() === $this) {
+                $image->setItem(null);
+            }
+        }
 
         return $this;
     }

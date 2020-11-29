@@ -9,3 +9,8 @@ liip_imagine:
                 thumbnail:
                     size: [600, 800]
                     mode: inset
+        slide:
+            filters:
+                thumbnail:
+                    size: [1024, 1536]
+                    mode: inset

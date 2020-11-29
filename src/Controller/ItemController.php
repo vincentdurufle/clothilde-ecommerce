@@ -60,11 +60,13 @@ class ItemController extends AbstractController
              $this->entityManager->persist($item);
              $this->entityManager->flush();
 
-            return $this->redirectToRoute('admin_index');
+             $this->addFlash('success', 'Item successfully added');
+
+            return $this->redirectToRoute('items_index');
         }
 
         return $this->render('admin/add_item.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
         ]);
     }
 

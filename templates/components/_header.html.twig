@@ -11,7 +11,7 @@
                 <a class="nav-link" href="{{ path('homepage_index') }}">{{ 'header.home'|trans }}</a>
             </li>
             <li class="nav-item {{ 'shop' in app.request.get('_route') ? 'active' }}">
-                <a class="nav-link" href="#">{{ 'header.shop'|trans }}</a>
+                <a class="nav-link" href="{{ path('shop_index') }}">{{ 'header.shop'|trans }}</a>
             </li>
 {#            <li class="nav-item {{ 'portfolio' in app.request.get('_route') ? 'active' }}">#}
 {#                <a class="nav-link" href="#">{{ 'header.portfolio'|trans }}</a>#}

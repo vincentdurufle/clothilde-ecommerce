@@ -1,10 +1,16 @@
 @import 'variables';
 
 .content {
-  flex-direction: row;
-  padding-top: 2rem;
   justify-content: flex-start;
-  align-items: flex-start;
+
+}
+
+.items-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding-top: 1rem;
+  width: 100%;
   .card {
     width: 250px;
     margin: 1rem;

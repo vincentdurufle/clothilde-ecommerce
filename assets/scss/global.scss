@@ -4,6 +4,25 @@
 
 html {
   min-height: 100vh;
+  //::-webkit-scrollbar {
+  //  width: 20px;
+  //  border-width: 10px;
+  //}
+  //
+  //::-webkit-scrollbar-track-piece {
+  //  background-color: $gainsboro;
+  //  border-color: $white;
+  //  border-width: 2px 9px 2px 9px;
+  //  border-style: solid;
+  //}
+  //
+  //::-webkit-scrollbar-thumb {
+  //  border-radius: 7px;
+  //  background-color: $gainsboro;
+  //  border-color: $white;
+  //  border-style: solid;
+  //  border-width: 1px 7px 1px 7px;
+  //}
 }
 
 body {
@@ -58,5 +77,12 @@ form.login {
   text-transform: uppercase;
   .btn-danger {
     background-color: $danger;
+  }
+}
+
+.alert {
+  margin: 1rem;
+  width: calc(100% - 2rem);
+  &.alert-error {
   }
 }

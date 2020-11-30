@@ -2,3 +2,15 @@
 liip_imagine:
     # valid drivers options include "gd" or "gmagick" or "imagick"
     driver: "gd"
+
+    filter_sets:
+        cover:
+            filters:
+                thumbnail:
+                    size: [600, 800]
+                    mode: inset
+        slide:
+            filters:
+                thumbnail:
+                    size: [1024, 1536]
+                    mode: inset

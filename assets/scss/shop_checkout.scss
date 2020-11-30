@@ -1,0 +1,19 @@
+@import 'variables';
+
+.content {
+  background-color: $secondary;
+}
+
+.success-container {
+  color: $white;
+  .title {
+    font-size: 4rem;
+  }
+  p {
+    font-size: 1.2rem;
+  }
+  .mail {
+    font-weight: bold;
+    color: $white;
+  }
+}

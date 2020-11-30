@@ -13,8 +13,35 @@ homepage:
   btn:
     shop: Buy now
 
+item:
+  type:
+    mural_decoration: Mural decoration
+    pillow: Pillow
+    carpet: Carpet
+    other: Other
+  composition: "Composition:"
+  size: "Size:"
+  price: "Price:"
+  shipping_fee: Shipping fee
+
 admin:
   menu:
     see_all: See all items
     invoices: Invoices
     add_item: Add item
+
+btn:
+  buy: Buy
+
+mail:
+  success:
+    description: Your order is being taken care of and an email will be sent to you whenever you order has been sent if you chose to be delivered.
+    inquiry: For any inquiry please respond to this email with your name and address.
+    see_you: Thanks again and see you soon !
+    subject: Clotilde Puy - Order complete
+
+order:
+  success:
+    title: Thanks for your order !
+    mail: An email will be sent to you in a few moments with all the details concerning your order.
+    mail_error: "If you have any question, please send a mail to: "

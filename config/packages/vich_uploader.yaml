@@ -10,3 +10,11 @@ vich_uploader:
             namer:
                 service: Vich\UploaderBundle\Naming\PropertyNamer
                 options: { property: 'name' }
+
+        slide:
+            uri_prefix: '%app.path.item_slide_images%'
+            upload_destination: '%kernel.project_dir%/public%app.path.item_slide_images%'
+            delete_on_remove: true
+            delete_on_update: true
+            namer:
+                service: Vich\UploaderBundle\Naming\UniqidNamer

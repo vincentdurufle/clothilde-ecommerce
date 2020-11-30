@@ -22,6 +22,7 @@ item:
   composition: "Composition:"
   size: "Size:"
   price: "Price:"
+  shipping_fee: Shipping fee
 
 admin:
   menu:
@@ -31,6 +32,13 @@ admin:
 
 btn:
   buy: Buy
+
+mail:
+  success:
+    description: Your order is being taken care of and an email will be sent to you whenever you order has been sent if you chose to be delivered.
+    inquiry: For any inquiry please respond to this email with your name and address.
+    see_you: Thanks again and see you soon !
+    subject: Clotilde Puy - Order complete
 
 order:
   success:

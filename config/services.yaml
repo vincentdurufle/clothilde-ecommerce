@@ -7,6 +7,7 @@ parameters:
     app.path.item_cover_images: /uploads/images/items/cover
     app.path.item_slide_images: /uploads/images/items/slide
     stripe.api_key: '%env(STRIPE_API_KEY)%'
+    contact_mail: '%env(CONTACT_MAIL)%'
 
 services:
     # default configuration for services in *this* file

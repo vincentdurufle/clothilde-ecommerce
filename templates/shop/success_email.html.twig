@@ -1,0 +1,50 @@
+{% trans_default_domain "app" %}
+
+{% apply inline_css %}
+    <!DOCTYPE html>
+    <html lang="{{ app.request.locale ?? 'en' }}">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <style type="text/css">
+            body {
+                margin: auto;
+                color: #000000;
+                background-color: #c6e3e1;
+                width: 100%;
+            }
+
+            a {
+                color: #000000;
+                text-decoration: none;
+            }
+
+            h1 {
+                font-size: 15px;
+                text-transform: uppercase;
+            }
+
+            .title {
+                color: #fff;
+            }
+
+            .description {
+                width: 80%;
+                background-color: #fff;
+            }
+        </style>
+        <title>Clotilde Puy</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="content">
+                <h1 class="title">Clotilde Puy</h1>
+                <div class="description">
+                    <p>{{ 'mail.success.description'|trans }}</p>
+                    <p>{{ 'mail.success.inquiry'|trans }}</p>
+                    <p>{{ 'mail.success.see_you'|trans }}</p>
+                </div>
+            </div>
+        </div>
+    </body>
+    </html>
+{% endapply %}

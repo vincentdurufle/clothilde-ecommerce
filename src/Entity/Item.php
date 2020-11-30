@@ -105,6 +105,11 @@ class Item
      */
     private $images;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $shippingFee;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime('now');
@@ -328,6 +333,18 @@ class Item
                 $image->setItem(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getShippingFee(): ?int
+    {
+        return $this->shippingFee;
+    }
+
+    public function setShippingFee(?int $shippingFee): self
+    {
+        $this->shippingFee = $shippingFee;
 
         return $this;
     }

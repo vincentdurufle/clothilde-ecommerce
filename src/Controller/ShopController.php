@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Item;
 use App\Repository\ItemRepository;
+use App\Service\Mailer;
 use Stripe\Checkout\Session;
 use Stripe\Exception\ApiErrorException;
 use Stripe\Exception\SignatureVerificationException;
@@ -16,6 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @Route("/shop")
@@ -27,9 +29,21 @@ class ShopController extends AbstractController
      */
     private $repository;
 
-    public function __construct(ItemRepository $repository)
+    /**
+     * @var TranslatorInterface
+     */
+    private $translator;
+
+    /**
+     * @var Mailer
+     */
+    private $mailer;
+
+    public function __construct(ItemRepository $repository, TranslatorInterface $translator, Mailer $mailer)
     {
         $this->repository = $repository;
+        $this->translator = $translator;
+        $this->mailer = $mailer;
     }
 
     /**
@@ -77,7 +91,14 @@ class ShopController extends AbstractController
 
         Stripe::setApiKey($this->getParameter('stripe.api_key'));
         $session = Session::create([
-           'payment_method_types' => ['card'],
+            'billing_address_collection' => 'required',
+            'shipping_address_collection' => [
+                'allowed_countries' => [
+                    'AT', 'BE', 'BG', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT',
+                    'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'GB'
+                ],
+            ],
+            'payment_method_types' => ['card'],
             'line_items' => [
                 [
                     'price_data' => [
@@ -88,11 +109,21 @@ class ShopController extends AbstractController
                         'unit_amount' => $item->getPrice() * 100
                     ],
                     'quantity' => 1
+                ],
+                [
+                    'price_data' => [
+                        'currency' => 'eur',
+                        'product_data' => [
+                            'name' => $this->translator->trans('item.shipping_fee', [], 'app')
+                        ],
+                        'unit_amount' => $item->getShippingFee() !== null ? $item->getShippingFee() * 100 : 0
+                    ],
+                    'quantity' => 1
                 ]
             ],
             'mode' => 'payment',
             'success_url' => $this->generateUrl('shop_item_sucess', [], UrlGeneratorInterface::ABSOLUTE_URL),
-            'cancel_url' => $this->generateUrl('shop_item_failure', [], UrlGeneratorInterface::ABSOLUTE_URL)
+            'cancel_url' => $this->generateUrl('shop_index', [], UrlGeneratorInterface::ABSOLUTE_URL)
         ]);
 
         $response = [
@@ -131,9 +162,17 @@ class ShopController extends AbstractController
             // Invalid signature
             throw new BadRequestHttpException('Invalid signature');
         }
-//        https://stripe.com/docs/payments/checkout/fulfill-orders
 
-        log($payload);
+        if ($event->type === 'checkout.session.completed') {
+            $session = $event->data->object;
+            log($session);
+            $this->mailer->sendEmail([
+                'to' => 'vincent.durufle@hotmail.fr',
+                'from' => $this->getParameter('contact_mail'),
+                'subject' => $this->translator->trans('mail.success.subject', [], 'app'),
+                'template' => 'shop/success_email.html.twig'
+            ]);
+        }
 
         return new Response();
     }
@@ -144,16 +183,6 @@ class ShopController extends AbstractController
      * @return Response
      */
     public function success(): Response
-    {
-        return $this->render('shop/shop_success.html.twig');
-    }
-
-    /**
-     * @Route("/checkout/failure", name="shop_item_failure")
-     *
-     * @return Response
-     */
-    public function failure(): Response
     {
         return $this->render('shop/shop_success.html.twig');
     }

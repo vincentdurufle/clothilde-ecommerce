@@ -9,11 +9,11 @@
 {% block body %}
     <div class="one-page-scroll-container" id="scroll-container">
         <section class="hero-container row no-gutters">
-            <div class="hero left col-6">
+            <div class="hero left">
                 <h1 class="name-title">Clotilde <br> Puy</h1>
                 <h2 class="hero-description">{{ 'homepage.hero.description'|trans }}</h2>
             </div>
-            <div class="right col-6">
+            <div class="right">
                 <div class="square">
                     <img class="layer" data-depth="0.1" src="{{ asset('img/tapis-hero-deskew.png') }}" alt="">
                 </div>
@@ -23,15 +23,15 @@
             </a>
         </section>
         <section class="last-project-container row no-gutters">
-            <div class="left col-6">
+            <div class="left">
                 <div class="item">
                     <h2 class="title">{{ 'homepage.latest'|trans }}</h2>
                     <h3 class="item-title">{{ item.name }}</h3>
                     <img src="{{ vich_uploader_asset(item, 'coverFile') | imagine_filter('cover') }}" alt="">
-                    <a href="" class="shop-item btn btn-light btn-lg">{{ 'homepage.btn.shop'|trans }}</a>
+                    <a href="{{ path('shop_item_show', {'slug': item.slug}) }}" class="shop-item btn btn-light btn-lg">{{ 'homepage.btn.shop'|trans }}</a>
                 </div>
             </div>
-            <div class="right col-6">
+            <div class="right">
                 <div class="description">
                     <h3>{{ 'homepage.project.description'|trans }}</h3>
                 </div>

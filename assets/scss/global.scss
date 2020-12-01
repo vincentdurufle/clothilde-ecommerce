@@ -55,6 +55,10 @@ nav {
   }
   margin: .5rem;
   border-radius: .25rem;
+  .navbar-toggler {
+    background-color: $light-gray;
+    opacity: .8;
+  }
 }
 
 .content {

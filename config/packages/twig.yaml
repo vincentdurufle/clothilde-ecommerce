@@ -4,3 +4,4 @@ twig:
     globals:
         stripe_public_key: '%env(STRIPE_PUBLIC_KEY)%'
         contact_mail: '%env(CONTACT_MAIL)%'
+        locales: 'en|fr'

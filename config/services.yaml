@@ -8,12 +8,17 @@ parameters:
     app.path.item_slide_images: /uploads/images/items/slide
     stripe.api_key: '%env(STRIPE_API_KEY)%'
     contact_mail: '%env(CONTACT_MAIL)%'
+    app_locale: 'en|fr'
+    locale: 'en'
 
 services:
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        bind:
+            $locales: '%app_locale%'
+            $defaultLocale: '%locale%'
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name

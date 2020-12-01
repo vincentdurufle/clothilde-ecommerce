@@ -15,7 +15,7 @@
             </div>
             <div class="right">
                 <div class="square">
-                    <img class="layer" data-depth="0.1" src="{{ asset('img/tapis-hero-deskew.png') }}" alt="">
+                    <img class="layer" data-depth="0.1" src="{{ asset('img/homepage-tapis-min.png') }}" alt="Clotilde Puy tapis sample">
                 </div>
             </div>
             <a href="#1" class="arrow-link">
@@ -25,10 +25,12 @@
         <section class="last-project-container row no-gutters">
             <div class="left">
                 <div class="item">
-                    <h2 class="title">{{ 'homepage.latest'|trans }}</h2>
-                    <h3 class="item-title">{{ item.name }}</h3>
-                    <img src="{{ vich_uploader_asset(item, 'coverFile') | imagine_filter('cover') }}" alt="">
-                    <a href="{{ path('shop_item_show', {'slug': item.slug}) }}" class="shop-item btn btn-light btn-lg">{{ 'homepage.btn.shop'|trans }}</a>
+                    {% if item %}
+                        <h2 class="title">{{ 'homepage.latest'|trans }}</h2>
+                        <h3 class="item-title">{{ item.name }}</h3>
+                        <img src="{{ vich_uploader_asset(item, 'coverFile') | imagine_filter('cover') }}" alt="{{ item.name }}">
+                        <a href="{{ path('shop_item_show', {'slug': item.slug}) }}" class="shop-item btn btn-light btn-lg">{{ 'homepage.btn.shop'|trans }}</a>
+                    {% endif %}
                 </div>
             </div>
             <div class="right">

@@ -44,9 +44,6 @@
     width: 100%;
     max-width: 1536px;
     max-height: 1024px;
-    @include media-breakpoint-down(md) {
-      width: 65%;
-    }
 
     [class^="number-slide"],
     [class*=" number-slide"] {
@@ -124,6 +121,16 @@
     width: 12px;
     height: 12px;
   }
+  @include media-breakpoint-down(md) {
+    width: 80%;
+    margin: auto;
+    .arrow--right {
+      right: -5% !important;
+    }
+    .arrow--left {
+      left: -5% !important;
+    }
+  }
 }
 
 .right {
@@ -132,6 +139,9 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  @include media-breakpoint-down(md) {
+    padding: 1rem 1rem 3rem 1rem;
+  }
   .description {
     font-size: 1.5rem;
     padding: 2rem;
@@ -158,5 +168,15 @@
     font-weight: bold;
     font-family: $font-family-base;
     color: $white;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .item-container {
+    .title {
+      font-size: 2rem;
+      padding: 2rem;
+      text-align: center;
+    }
   }
 }

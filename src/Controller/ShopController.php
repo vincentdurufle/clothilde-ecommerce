@@ -165,7 +165,7 @@ class ShopController extends AbstractController
         $webhookSecret = $this->getParameter('stripe.webhook_secret');
 
         $payload = @file_get_contents('php://input');
-        $sig_header = $request->headers->get('HTTP_STRIPE_SIGNATURE');
+        $sig_header = $request->headers->get('Stripe-Signature');
         $event = null;
 
         try {

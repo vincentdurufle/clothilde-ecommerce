@@ -7,18 +7,11 @@
 {% endblock %}
 
 {% block body %}
-    <div class="previews-container">
-        <div class="card card-prototype" >
-            <img src="" class="card-img-top" alt="preview">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-            </div>
-        </div>
-    </div>
     {{ form_start(form) }}
         {{ form_row(form.name) }}
         {{ form_row(form.type) }}
         {{ form_row(form.price) }}
+        {{ form_row(form.shippingFee) }}
         {{ form_row(form.descriptionEn) }}
         {{ form_row(form.descriptionFr) }}
         {{ form_row(form.compositionEn) }}
@@ -26,7 +19,7 @@
         {{ form_row(form.coverFile) }}
         {{ form_row(form.size) }}
         {{ form_row(form.images) }}
-        <button type="button" class="add-image btn btn-secondary w-100">Add image</button>
+        <button type="button" class="add-image btn btn-secondary w-100 my-2">Add image</button>
         {{ form_row(form.submit) }}
     {{ form_end(form) }}
 {% endblock %}

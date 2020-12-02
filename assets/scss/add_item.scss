@@ -32,3 +32,12 @@ form {
     width: 100%;
   }
 }
+
+.custom-file {
+  display: inline;
+  .uploaded-image {
+    max-height: 300px;
+    object-fit: contain;
+    width: 100%;
+  }
+}

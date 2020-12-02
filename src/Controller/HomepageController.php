@@ -23,4 +23,14 @@ class HomepageController extends AbstractController
             'item' => $lastItem
         ]);
     }
+
+    /**
+     * @Route("/legals", name="legals_show")
+     *
+     * @return Response
+     */
+    public function legals(): Response
+    {
+        return $this->render('homepage/conditions.html.twig');
+    }
 }

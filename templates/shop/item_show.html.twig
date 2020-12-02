@@ -36,13 +36,15 @@
                 <div id="dots" class="dots"></div>
             </div>
             <div class="right">
-                <p class="description">{{ item.descriptionEn }}</p>
+                {% set description = item|localeField('Description', app.request.locale) %}
+                <p class="description">{{ description }}</p>
                 <div class="info">
                     <ul>
-                        {% if item.compositionEn %}
+                        {% set composition = item|localeField('Composition', app.request.locale) %}
+                        {% if composition %}
                             <li>
                                 <span class="info-title">{{ 'item.composition'|trans }}</span>
-                                <p class="composition">{{ item.compositionEn }}</p>
+                                <p class="composition">{{ composition }}</p>
                             </li>
                         {% endif %}
                         {% if item.size %}
@@ -57,12 +59,14 @@
                         </li>
                     </ul>
                 </div>
-                <button id="checkout-button" class="buy btn btn-lg btn-secondary"
-                        data-href="{{ path('checkout_session', {'slug': item.slug}) }}"
-                        data-stripe="{{ stripe_public_key }}"
-                >
-                    {{ 'btn.buy'|trans }}
-                </button>
+                {% if not item.sold %}
+                    <button id="checkout-button" class="buy btn btn-lg btn-secondary"
+                            data-href="{{ path('checkout_session', {'slug': item.slug}) }}"
+                            data-stripe="{{ stripe_public_key }}"
+                    >
+                        {{ 'btn.buy'|trans }}
+                    </button>
+                {% endif %}
             </div>
         </div>
     </div>

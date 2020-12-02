@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain 'app' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('legals') }}
+{% endblock %}
+
+{% block body %}
+    <div class="legals-container container">
+        <h1>{{ 'legals'|trans }}</h1>
+        <div class="delivery">
+            <h2>{{ 'conditions.delivery.title'|trans }}</h2>
+            <p>{{ 'conditions.delivery.content'|trans }}</p>
+            <p>{{ 'conditions.delivery.content_2'|trans }}</p>
+        </div>
+        <div class="refund">
+            <h2>{{ 'conditions.refund.title'|trans }}</h2>
+            <p>{{ 'conditions.refund.content'|trans }}</p>
+            <p>{{ 'conditions.refund.content_2'|trans }}</p>
+        </div>
+        <div class="products">
+            <h2>{{ 'conditions.products.title'|trans }}</h2>
+            <p>{{ 'conditions.products.content'|trans }}</p>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('legals') }}
+{% endblock %}

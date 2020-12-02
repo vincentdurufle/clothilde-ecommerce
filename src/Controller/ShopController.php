@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Item;
 use App\Repository\ItemRepository;
 use App\Service\Mailer;
+use Doctrine\ORM\EntityManagerInterface;
 use Stripe\Checkout\Session;
 use Stripe\Exception\ApiErrorException;
 use Stripe\Exception\SignatureVerificationException;
@@ -30,6 +31,11 @@ class ShopController extends AbstractController
     private $repository;
 
     /**
+     * @var EntityManagerInterface
+     */
+    private $entityManager;
+
+    /**
      * @var TranslatorInterface
      */
     private $translator;
@@ -39,9 +45,15 @@ class ShopController extends AbstractController
      */
     private $mailer;
 
-    public function __construct(ItemRepository $repository, TranslatorInterface $translator, Mailer $mailer)
+    public function __construct(
+        ItemRepository $repository,
+        EntityManagerInterface $entityManager,
+        TranslatorInterface $translator,
+        Mailer $mailer
+    )
     {
         $this->repository = $repository;
+        $this->entityManager = $entityManager;
         $this->translator = $translator;
         $this->mailer = $mailer;
     }
@@ -121,8 +133,11 @@ class ShopController extends AbstractController
                     'quantity' => 1
                 ]
             ],
+            'metadata' => [
+                'item-slug' => $item->getSlug()
+            ],
             'mode' => 'payment',
-            'success_url' => $this->generateUrl('shop_item_sucess', [], UrlGeneratorInterface::ABSOLUTE_URL),
+            'success_url' => $this->generateUrl('shop_item_sucess', ['slug' => $item->getSlug()], UrlGeneratorInterface::ABSOLUTE_URL),
             'cancel_url' => $this->generateUrl('shop_index', [], UrlGeneratorInterface::ABSOLUTE_URL)
         ]);
 
@@ -142,10 +157,12 @@ class ShopController extends AbstractController
     {
         Stripe::setApiKey($this->getParameter('stripe.api_key'));
 
-        function log($val) {
+        function log($val)
+        {
             return file_put_contents('php://stderr', print_r($val, TRUE));
         }
-        $webhookSecret = 'whsec_aBphZyB46Z41mX0pM6qj1Ri9fCPp6ALq';
+
+        $webhookSecret = $this->getParameter('stripe.webhook_secret');
 
         $payload = @file_get_contents('php://input');
         $sig_header = $request->headers->get('HTTP_STRIPE_SIGNATURE');
@@ -155,35 +172,45 @@ class ShopController extends AbstractController
             $event = Webhook::constructEvent(
                 $payload, $sig_header, $webhookSecret
             );
-        } catch(\UnexpectedValueException $e) {
+        } catch (\UnexpectedValueException $e) {
             // Invalid payload
             throw new BadRequestHttpException('Invalid payload');
-        } catch(SignatureVerificationException $e) {
+        } catch (SignatureVerificationException $e) {
             // Invalid signature
             throw new BadRequestHttpException('Invalid signature');
         }
 
         if ($event->type === 'checkout.session.completed') {
             $session = $event->data->object;
+
             log($session);
-            $this->mailer->sendEmail([
-                'to' => 'vincent.durufle@hotmail.fr',
-                'from' => $this->getParameter('contact_mail'),
-                'subject' => $this->translator->trans('mail.success.subject', [], 'app'),
-                'template' => 'shop/success_email.html.twig'
-            ]);
         }
 
         return new Response();
     }
 
     /**
-     * @Route("/checkout/success", name="shop_item_sucess")
+     * @Route("/checkout/success/{slug}", name="shop_item_sucess")
      *
      * @return Response
      */
-    public function success(): Response
+    public function success(string $slug): Response
     {
+        $item = $this->repository->findOneBy(['slug' => $slug]);
+        if ($item) {
+            $item->setSold(true);
+
+//            $this->mailer->sendEmail([
+//                'to' => 'vincent.durufle@hotmail.fr',
+//                'from' => $this->getParameter('contact_mail'),
+//                'subject' => $this->translator->trans('mail.success.subject', [], 'app'),
+//                'template' => 'shop/success_email.html.twig'
+//            ]);
+        }
+
+        $this->entityManager->persist($item);
+        $this->entityManager->flush();
+
         return $this->render('shop/shop_success.html.twig');
     }
 }

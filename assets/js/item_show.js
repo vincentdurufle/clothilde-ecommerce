@@ -4,7 +4,10 @@ import KeenSlider from "keen-slider";
 
 document.addEventListener('DOMContentLoaded', () => {
     initSlider();
-    document.querySelector('#checkout-button').addEventListener('click', checkout)
+    const checkoutBtn = document.querySelector('#checkout-button');
+    if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', checkout);
+    }
 })
 
 const checkout = (e) => {

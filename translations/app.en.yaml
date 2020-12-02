@@ -8,7 +8,8 @@ homepage:
   hero:
     description: Weaving and tufting made in France
   project:
-    description: Clotilde Puy is based in Paris. She creates unique and handmade interior objects. She uses weaving and tufting to produce colorful pieces inspired by japanese pop culture.
+    description: Clotilde Puy is a french textile designer based in Paris. She uses weaving and tufting to create rugs and interior objects. Every piece is unique and handmade with heart.
+
   latest: Latest creation
   btn:
     shop: Buy now
@@ -23,6 +24,7 @@ item:
   size: "Size:"
   price: "Price:"
   shipping_fee: Shipping fee
+  sold: Sold
 
 admin:
   menu:
@@ -45,3 +47,25 @@ order:
     title: Thanks for your order !
     mail: An email will be sent to you in a few moments with all the details concerning your order.
     mail_error: "If you have any question, please send a mail to: "
+
+legals: Terms of sale
+
+conditions:
+  delivery:
+    title: "Envoie et livraison des colis :"
+    content: >
+      Livraison en France Métropolitaine et Europe.
+      Les frais de port varient en fonction de la taille et du poids du colis.
+      Tous les envoies se font par la poste colissimo avec numéro de suivi.
+      Pour une livraison à l’internationale ou en France outre-mer, veuillez me contacter directement par mail: clotildepuy.contact@gmail.com
+    content_2: Les colis sont envoyés entre 1 à 3 jours ouvrés après la date de l’achat.
+  refund:
+    title: "Retour et remboursement:"
+    content: Les retours sont acceptés uniquement pour les produits endommagés pendant la livraison.
+    content_2: Les remboursements sont effectués uniquement pour les produits perdus pendant la livraison.
+  products:
+    title: "Particularité des produits:"
+    content: >
+      Chaque produit est unique et entièrement réalisé par Clotilde Puy dans son atelier parisien.
+      Ces pièces d’artisanat nécessitent d’être manipulées avec soin. Aucun produit n’est lavable en machine.
+      Pour l’entretien, veuillez privilégier le pressing.

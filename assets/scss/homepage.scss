@@ -36,7 +36,7 @@
       width: 80%;
     }
     img {
-      filter: drop-shadow(1px 1px 5px black);
+      filter: drop-shadow(1px 1px 5px white);
       width: 90%;
       height: auto;
     }
@@ -116,10 +116,10 @@
       img {
         width: 80%;
         margin: auto;
-        filter: drop-shadow(1px 1px 5px black);
       }
       .shop-item {
         text-transform: uppercase;
+        margin: 1rem 0;
       }
     }
   }

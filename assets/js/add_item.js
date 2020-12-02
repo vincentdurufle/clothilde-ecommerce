@@ -1,7 +1,7 @@
 require('../scss/add_item.scss');
 const imagesContainer = document.querySelector('#item_images');
 const prototype = imagesContainer.dataset.prototype;
-const index = imagesContainer.querySelectorAll('input').length;
+let index = imagesContainer.querySelectorAll('input').length;
 
 document.addEventListener('DOMContentLoaded', () => {
     imagesContainer.dataset.index = index.toString();
@@ -11,17 +11,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const previewFile = (e) => {
     const url = URL.createObjectURL(e.target.files[0]);
-    const prototype = document.querySelector('.card-prototype').cloneNode(true);
-
-    prototype.querySelector('img').src = url;
-    prototype.querySelector('.card-title').textContent = e.target.dataset.title;
-    prototype.classList.remove('card-prototype');
-
-    document.querySelector('.previews-container').appendChild(prototype);
+    const parent = e.target.closest('.custom-file');
+    if (parent.querySelector('.uploaded-image')) {
+        parent.querySelector('.uploaded-image').src = url;
+    } else {
+        const img = `<img src="${url}" class="uploaded-image" alt="">`;
+        e.target.closest('.custom-file').insertAdjacentHTML('beforeend', img)
+    }
 }
 
 const addImage = () => {
     let prototypeClone = prototype.replaceAll('__name__', index);
-    imagesContainer.dataset.index = (index + 1).toString();
+    index += 1;
+    imagesContainer.dataset.index = (index).toString();
     imagesContainer.insertAdjacentHTML('beforeend', `<div>${prototypeClone}</div>`)
+    document.querySelector(`#item_images_${index}_imageFile_file`).addEventListener('change', previewFile)
 }

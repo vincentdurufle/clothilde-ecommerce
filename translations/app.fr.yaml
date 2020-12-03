@@ -28,7 +28,7 @@ item:
 shop:
   no_shipping:
     button: Vous préférez le retrait sur place ?
-    description: En choisissant le retrait sur place, le coût de livraison sera soustrait du montant total.
+    description: En choisissant le retrait sur place, le coût d'expédition sera soustrait du montant total.
     pickup: L'article pourra être retirer au 14 rue Martel, 75010 Paris.
 
 btn:

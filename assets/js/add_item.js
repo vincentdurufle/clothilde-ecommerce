@@ -22,8 +22,8 @@ const previewFile = (e) => {
 
 const addImage = () => {
     let prototypeClone = prototype.replaceAll('__name__', index);
-    index += 1;
-    imagesContainer.dataset.index = (index).toString();
+    imagesContainer.dataset.index = (index + 1).toString();
     imagesContainer.insertAdjacentHTML('beforeend', `<div>${prototypeClone}</div>`)
     document.querySelector(`#item_images_${index}_imageFile_file`).addEventListener('change', previewFile)
+    index += 1;
 }

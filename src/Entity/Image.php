@@ -43,6 +43,7 @@ class Image
 
     /**
      * @ORM\ManyToOne(targetEntity=Item::class, inversedBy="images")
+     * @ORM\JoinColumn(name="item_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $item;
 

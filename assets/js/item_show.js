@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const checkoutBtn = document.querySelector('#checkout-button');
     if (checkoutBtn) {
         checkoutBtn.addEventListener('click', checkout);
+        document.querySelector('.no-shipping-buy').addEventListener('click', checkout);
     }
 })
 

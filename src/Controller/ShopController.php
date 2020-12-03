@@ -92,14 +92,16 @@ class ShopController extends AbstractController
      * @Route("/create-checkout-session/{slug}", name="checkout_session", methods={"GET", "POST"})
      *
      * @param string $slug
+     * @param Request $request
      *
      * @return JsonResponse
      * @throws ApiErrorException
      */
-    public function checkout(string $slug): JsonResponse
+    public function checkout(string $slug, Request $request): JsonResponse
     {
         /** @var Item $item */
         $item = $this->repository->findOneBy(['slug' => $slug]);
+        $checkoutFee = $request->query->get('shipping', true);
 
         Stripe::setApiKey($this->getParameter('stripe.api_key'));
         $session = Session::create([
@@ -128,7 +130,7 @@ class ShopController extends AbstractController
                         'product_data' => [
                             'name' => $this->translator->trans('item.shipping_fee', [], 'app')
                         ],
-                        'unit_amount' => $item->getShippingFee() !== null ? $item->getShippingFee() * 100 : 0
+                        'unit_amount' => ($checkoutFee === true ? $item->getShippingFee() !== null ? $item->getShippingFee() * 100 : 0 : 0)
                     ],
                     'quantity' => 1
                 ]

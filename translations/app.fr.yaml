@@ -25,8 +25,15 @@ item:
   shipping_fee: Frais d'expédition
   sold: Vendu
 
+shop:
+  no_shipping:
+    button: Vous préférez le retrait sur place ?
+    description: En choisissant le retrait sur place, le coût d'expédition sera soustrait du montant total.
+    pickup: L'article pourra être retirer au 14 rue Martel, 75010 Paris.
+
 btn:
   buy: Acheter
+  close: Fermer
 
 order:
   success:

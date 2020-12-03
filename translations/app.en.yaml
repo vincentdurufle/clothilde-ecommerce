@@ -26,6 +26,12 @@ item:
   shipping_fee: Shipping fee
   sold: Sold
 
+shop:
+  no_shipping:
+    button: You prefer a local pickup ?
+    description: By choosing a local pickup the shipping fee will be removed from the total at checkout.
+    pickup: Pickup will be made at the 14 rue Martel, 75010 Paris.
+
 admin:
   menu:
     see_all: See all items
@@ -34,6 +40,7 @@ admin:
 
 btn:
   buy: Buy
+  close: Close
 
 mail:
   success:

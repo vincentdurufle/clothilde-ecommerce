@@ -41,15 +41,15 @@ order:
     mail: Un email va vous être envoyé dans quelques instant pour récapituler votre commande.
     mail_error: "Pour toute question merci d'envoyer un mail à: "
 
-legals: Conditions générale de vente
+legals: Conditions générales de vente
 
 conditions:
   delivery:
-    title: "Envoie et livraison des colis :"
+    title: "Envoi et livraison des colis :"
     content: >
       Livraison en France Métropolitaine et Europe.
       Les frais de port varient en fonction de la taille et du poids du colis.
-      Tous les envoies se font par la poste colissimo avec numéro de suivi.
+      Tous les envois se font par la poste colissimo avec numéro de suivi.
       Pour une livraison à l’internationale ou en France outre-mer, veuillez me contacter directement par mail: clotildepuy.contact@gmail.com
     content_2: Les colis sont envoyés entre 1 à 3 jours ouvrés après la date de l’achat.
   refund:

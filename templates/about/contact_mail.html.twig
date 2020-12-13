@@ -1,0 +1,68 @@
+{% trans_default_domain "app" %}
+
+{% apply inline_css %}
+    <!DOCTYPE html>
+    <html lang="{{ app.request.locale ?? 'en' }}">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <style type="text/css">
+            html,
+            body {
+                margin: auto;
+                color: #000000;
+                background-color: #c6e3e1;
+                width: 100%;
+                padding: 1rem 0 3rem;
+            }
+
+            a {
+                color: #000000;
+                text-decoration: none;
+                font-weight: bold;
+            }
+
+            .title {
+                font-size: 2rem;
+                text-transform: uppercase;
+                text-align: center;
+            }
+
+            .title {
+                color: #fff;
+            }
+
+            .description {
+                width: 80%;
+                background-color: #fff;
+                margin: auto;
+                padding: 2rem;
+            }
+            .content {
+                white-space: pre;
+            }
+            hr {
+                width: 60%;
+            }
+        </style>
+        <title>Clotilde Puy</title>
+    </head>
+    <body>
+    <div class="container">
+        <div class="content">
+            <h1 class="title">Clotilde Puy</h1>
+            <div class="description">
+                <p>Someone wants to contact you from your website. You can reply to this email or click on the mail below to respond.</p>
+                <p>Below are the informations about the user.</p>
+                <hr>
+                <p>Name: {{ name }}</p>
+                <p>Email: <a href="mailto:{{ userEmail }}">{{ userEmail }}</a></p>
+                <div class="content">
+                    <p>Content of the mail:</p>
+                    <p>{{ content }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+    </html>
+{% endapply %}

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain 'app' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('about') }}
+{% endblock %}
+
+{% block body %}
+    <div class="photo-container">
+        <div class="left">
+            <img class="rellax" data-rellax-percentage="0.6" data-rellax-speed="-10" src="{{ asset('img/about.jpg') }}" alt="Clotilde Puy with rugs">
+        </div>
+        <div class="right">
+            <h1 class="header rellax" data-rellax-speed="10">{{ 'about.header'|trans|raw }}</h1>
+            <p class="rellax" data-rellax-speed="6">{{ 'about.paragraph_1'|trans|raw }}</p>
+            <p class="rellax second" data-rellax-speed="4">{{ 'about.paragraph_2'|trans|raw }}</p>
+            <p class="rellax second" data-rellax-speed="2">{{ 'about.paragraph_3'|trans|raw }}</p>
+        </div>
+    </div>
+    <div class="contact">
+        <div class="contact-header">
+            <h2 class="title">{{ 'about.contact.title'|trans }}</h2>
+            <p class="description">
+                {{ 'about.contact.description'|trans }}
+                <a class="mail" href="mailto:{{ contact_mail }}">{{ contact_mail }}</a>
+                {{ 'about.contact.description_2'|trans }}
+            </p>
+            {{ form(form) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('about') }}
+{% endblock %}

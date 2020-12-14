@@ -22,9 +22,9 @@
 {#            <li class="nav-item {{ 'portfolio' in app.request.get('_route') ? 'active' }}">#}
 {#                <a class="nav-link" href="#">{{ 'header.portfolio'|trans }}</a>#}
 {#            </li>#}
-{#            <li class="nav-item {{ 'about' in app.request.get('_route') ? 'active' }}">#}
-{#                <a class="nav-link" href="#">{{ 'header.about'|trans }}</a>#}
-{#            </li>#}
+            <li class="nav-item {{ 'about' in app.request.get('_route') ? 'active' }}">
+                <a class="nav-link" href="{{ path('about_index') }}">{{ 'header.about'|trans }}</a>
+            </li>
             {% for locale in applocales %}
                 {% if locale != app.request.locale %}
                     <li class="nav-item">

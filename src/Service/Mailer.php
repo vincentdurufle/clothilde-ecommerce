@@ -26,10 +26,11 @@ class Mailer
     {
         $email = (new TemplatedEmail())
             ->from($params['from'])
-            ->to($params['from'])
+            ->to($params['to'])
+            ->addReplyTo($params['replyTo'])
             ->subject($params['subject'])
-            ->htmlTemplate('')
-            ->context($params['variables'] ?? []);
+            ->htmlTemplate($params['template'])
+            ->context($params['params'] ?? []);
 
         $this->mailer->send($email);
     }

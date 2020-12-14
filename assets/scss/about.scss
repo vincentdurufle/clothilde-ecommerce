@@ -1,0 +1,111 @@
+@import 'variables';
+@import '~bootstrap/scss/bootstrap-grid';
+
+main {
+  overflow-x: hidden;
+}
+
+.content {
+  padding: 0;
+}
+
+.photo-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: $green;
+  .right {
+    @extend .col-lg-6;
+    @extend .col-sm-10;
+    @extend .col-12;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: $white;
+    .header {
+      font-size: 5rem;
+      margin: 50% 0;
+    }
+    p {
+      font-size: 2rem;
+      padding: 0 2rem;
+      &.second {
+        margin: 2rem 0;
+      }
+    }
+    @include media-breakpoint-down(md) {
+      .header {
+        margin-top: 30%;
+        margin-bottom: 70%;
+      }
+      background-color: rgba(0, 0, 0, .4);
+    }
+  }
+  .left {
+    @extend .col-lg-6;
+    @extend .col-md-2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    img {
+      width: 80%;
+      height: 100%;
+      margin: 2rem;
+      padding: 2rem;
+    }
+    @include media-breakpoint-down(md) {
+      img {
+        width: auto;
+        height: 60vh;
+        margin: 2rem;
+        padding: 2rem;
+        position: absolute;
+        left: 5%;
+      }
+    }
+    @include media-breakpoint-down(sm) {
+      img {
+        //padding: .5rem;
+        //margin: .5rem;
+      }
+      padding: 0;
+    }
+  }
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  background-color: $white;
+  width: 100%;
+  z-index: 100;
+  .contact-header {
+    width: 60%;
+    .title {
+      text-align: center;
+      font-size: 2rem;
+    }
+    .mail {
+      font-weight: bold;
+      transition: .3s;
+      text-decoration: none;
+    }
+    .description {
+      font-size: 1rem;
+      margin: 1rem 0;
+    }
+  }
+  @include media-breakpoint-down(md) {
+    .contact-header {
+      width: 80%;
+    }
+  }
+}

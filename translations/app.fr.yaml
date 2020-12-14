@@ -62,3 +62,28 @@ conditions:
       Chaque produit est unique et entièrement réalisé par Clotilde Puy dans son atelier parisien.
       Ces pièces d’artisanat nécessitent d’être manipulées avec soin. Aucun produit n’est lavable en machine.
       Pour l’entretien, veuillez privilégier le pressing.
+
+about:
+  header: Bonjour, <br>Je suis Clotilde <br>Puy
+  paragraph_1: >
+    Clotilde Puy est diplômée d’un cursus design de mode de 4 ans au sein de <strong>l’ESAA Duperré</strong>.
+    Elle a appris la technique du tissage au cours d’une expérience de plusieurs mois dans le bureau de création
+    textile de la <strong>Maison Lesage</strong>.
+  paragraph_2: >
+    En 2019, la créatrice est partie un an au <strong>Japon</strong> à la rencontre d’artisans du textile.
+    Là bas, l’artiste Keiko Fukui lui a enseigné le savoir-faire du <i>katazomé</i> (procédé d’impression traditionnel)
+    lors d’un workshop de plusieurs mois dans la province de Shiga.
+  paragraph_3: >
+    Forte de ces expériences, Clotilde Puy s'est lancée à son compte en tant que designer textile spécialisée
+    dans le tissage et le tuftage artisanal. Aujourd'hui, elle créait des produits de décoration d'intérieur uniques et
+    entièrement réalisés à la main dans son atelier parisien.
+  contact:
+    title: Contact
+    description: >
+      Pour toute question, demande de collaboration ou commande personnalisée, n'hésitez pas à contacter Clotilde Puy
+      par mail à
+    description_2: ou en remplissant le formulaire suivant.
+    form:
+      name: Nom
+      content: Contenu
+      submit: Envoyer

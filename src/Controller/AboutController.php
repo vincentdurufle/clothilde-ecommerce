@@ -51,6 +51,8 @@ class AboutController extends AbstractController
                 ]
             ];
             $this->mailer->sendEmail($params);
+
+            return $this->redirectToRoute('homepage_index');
         }
 
         return $this->render('about/index.html.twig', [

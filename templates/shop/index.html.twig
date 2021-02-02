@@ -7,11 +7,26 @@
 {% endblock %}
 
 {% block body %}
-    <div class="top-img">
-        <img src="{{ asset('img/shop-header.jpg') }}" alt="Clotilde puy works">
+    <div class="hero">
         <div class="title-container">
             <h1 class="title">{{ 'header.shop'|trans }}</h1>
         </div>
+    </div>
+    <div class="category-container">
+        <ul>
+            <li>
+                <a href="{{ path('show_category', {'category': 'carpet'}) }}" class="category">{{ 'shop.category.carpet'|trans }}</a>
+            </li>
+            <li>
+                <a href="{{ path('show_category', {'category': 'mural-decoration'}) }}" class="category">{{ 'shop.category.mural_decoration'|trans }}</a>
+            </li>
+            <li>
+                <a href="{{ path('show_category', {'category': 'pillow'}) }}" class="category">{{ 'shop.category.pillow'|trans }}</a>
+            </li>
+            <li>
+                <a href="{{ path('show_category', {'category': 'other'}) }}" class="category">{{ 'shop.category.other'|trans }}</a>
+            </li>
+        </ul>
     </div>
     <div class="item-container">
         {% for item in items %}

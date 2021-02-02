@@ -27,6 +27,11 @@ item:
   sold: Sold
 
 shop:
+  category:
+    mural_decoration: Mural decoration
+    pillow: Pillow
+    carpet: Carpet
+    other: Other
   no_shipping:
     button: You prefer a local pickup ?
     description: By choosing a local pickup the shipping fee will be removed from the total at checkout.

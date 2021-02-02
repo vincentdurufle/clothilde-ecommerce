@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Item;
 use App\Repository\ItemRepository;
-use App\Service\Mailer;
 use Doctrine\ORM\EntityManagerInterface;
 use Stripe\Checkout\Session;
 use Stripe\Exception\ApiErrorException;
@@ -18,6 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
@@ -41,21 +41,21 @@ class ShopController extends AbstractController
     private $translator;
 
     /**
-     * @var Mailer
+     * @var SerializerInterface
      */
-    private $mailer;
+    private $serializer;
 
     public function __construct(
         ItemRepository $repository,
         EntityManagerInterface $entityManager,
         TranslatorInterface $translator,
-        Mailer $mailer
+        SerializerInterface $serializer
     )
     {
         $this->repository = $repository;
         $this->entityManager = $entityManager;
         $this->translator = $translator;
-        $this->mailer = $mailer;
+        $this->serializer = $serializer;
     }
 
     /**
@@ -70,6 +70,25 @@ class ShopController extends AbstractController
         return $this->render('shop/index.html.twig', [
             'items' => $items
         ]);
+    }
+
+    /**
+     * @Route("/category/{category}", name="show_category")
+     *
+     * @param string $category
+     *
+     * @return JsonResponse
+     */
+    public function category(string $category): JsonResponse
+    {
+        $items = $this->repository->findBy(['type' => $category]);
+
+        $response = [];
+        foreach ($items as $item) {
+            $response['items'] = $this->serializer->serialize($item, 'json');
+        }
+
+        return new JsonResponse($response, Response::HTTP_OK);
     }
 
     /**

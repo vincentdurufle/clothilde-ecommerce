@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const container = document.querySelector('.hero-container');
-    const parallaxInstance = new Parallax(container, {
-        selector: '.layer',
-    });
+    // const parallaxInstance = new Parallax(container, {
+    //     selector: '.layer',
+    // });
 })

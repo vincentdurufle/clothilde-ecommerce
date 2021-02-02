@@ -1,0 +1,22 @@
+@mixin arrow-down {
+  @keyframes arrow-move {
+    0% {
+      bottom: 5%;
+    }
+    25% {
+      bottom: 6%;
+    }
+    50% {
+      bottom: 5%;
+    }
+    75% {
+      bottom: 4%;
+    }
+    100% {
+      bottom: 5%;
+    }
+  }
+
+  animation: arrow-move 1.5s linear 0s infinite;
+}
+

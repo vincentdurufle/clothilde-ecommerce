@@ -86,3 +86,11 @@ about:
       name: Nom
       content: Contenu
       submit: Envoyer
+
+portfolio:
+  anchors:
+    tufting: Tufting
+    weaving: Tissage
+    japan: Japon
+  tufting_first: Le tuftage est une technique qui permet de fabriquer des tapis en piquant des fils de laine à travers une toile canevas. Ainsi, je réalise des tapis, coussins et décorations murales au moyen d’un pistolet à tufter. Ce procédé permet une variation de couleurs et motifs infinis et offre des surfaces confortables et de haute qualité. J’attache beaucoup d’importance aux finitions et veille à ce que chaque pièce soit unique et originale.
+  tufting_second: J’ai à cœur de pouvoir réaliser des commandes personnalisées et sur-mesure. Le client alors a une liberté de choix dans les dimensions, les couleurs et les motifs correspondant à mon esthétique.

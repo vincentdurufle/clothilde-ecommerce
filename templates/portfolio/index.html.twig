@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain 'app' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('portfolio_index') }}
+{% endblock %}
+
+{% block body %}
+    <div class="landing-container">
+        <div class="anchors">
+            <h1 class="rellax header underline" data-rellax-speed="10">{{ 'header.portfolio'|trans }}</h1>
+            <div class="links">
+                <a href="#tufting" class="link">{{ 'portfolio.anchors.tufting'|trans }}</a>
+                <a href="#" class="link">{{ 'portfolio.anchors.weaving'|trans }}</a>
+                <a href="#" class="link">{{ 'portfolio.anchors.japan'|trans }}</a>
+            </div>
+        </div>
+        <i class="fas fa-chevron-down fa-2x"></i>
+    </div>
+    <div class="tufting-container">
+        <div class="img-container">
+            <h1 class="title" id="tufting">{{ 'portfolio.anchors.tufting'|trans }}</h1>
+            <img class="small rellax" data-rellax-percentage="0" src="{{ asset('img/portfolio/tuftage03.JPG')| imagine_filter('cover') }}" alt="tufting image 3">
+            <img class="tall rellax" data-rellax-percentage="0" src="{{ asset('img/portfolio/tuftage04.JPG')| imagine_filter('cover') }}" alt="tufting image 2">
+            <img class="medium rellax" data-rellax-percentage="0" src="{{ asset('img/portfolio/tuftage01.JPG')| imagine_filter('cover') }}" alt="tufting image 1">
+        </div>
+{#        <div class="text">#}
+{#            <p>{{ 'portfolio.tufting_first'|trans }}</p>#}
+{#            <p>{{ 'portfolio.tufting_second'|trans }}</p>#}
+{#        </div>#}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('portfolio_index') }}
+{% endblock %}

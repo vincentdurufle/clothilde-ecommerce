@@ -99,3 +99,10 @@ about:
       name: Name
       content: Content
       submit: Submit
+
+portfolio:
+  title: Tufting
+  anchors:
+    tufting: Tufting
+    weaving: Weaving
+    japan: Japan

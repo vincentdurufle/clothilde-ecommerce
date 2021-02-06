@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Item;
 use App\Repository\ItemRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Liip\ImagineBundle\Imagine\Cache\CacheManager;
 use Stripe\Checkout\Session;
 use Stripe\Exception\ApiErrorException;
 use Stripe\Exception\SignatureVerificationException;
@@ -19,6 +20,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
+use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
 
 /**
  * @Route("/shop")
@@ -45,17 +47,31 @@ class ShopController extends AbstractController
      */
     private $serializer;
 
+    /**
+     * @var UploaderHelper;
+     */
+    private $uploaderHelper;
+
+    /**
+     * @var CacheManager;
+     */
+    private $cacheManager;
+
     public function __construct(
         ItemRepository $repository,
         EntityManagerInterface $entityManager,
         TranslatorInterface $translator,
-        SerializerInterface $serializer
+        SerializerInterface $serializer,
+        UploaderHelper $uploaderHelper,
+        CacheManager $cacheManager
     )
     {
         $this->repository = $repository;
         $this->entityManager = $entityManager;
         $this->translator = $translator;
         $this->serializer = $serializer;
+        $this->uploaderHelper = $uploaderHelper;
+        $this->cacheManager = $cacheManager;
     }
 
     /**
@@ -85,7 +101,9 @@ class ShopController extends AbstractController
 
         $response = [];
         foreach ($items as $item) {
-            $response['items'] = $this->serializer->serialize($item, 'json');
+            $path = $this->uploaderHelper->asset($item, 'coverFile');
+            $response['items'][] = $this->serializer->serialize($item, 'json');
+            $response['covers'][] = $this->cacheManager->getBrowserPath($path, sprintf('%s', 'cover'));
         }
 
         return new JsonResponse($response, Response::HTTP_OK);

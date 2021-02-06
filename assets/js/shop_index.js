@@ -1,8 +1,23 @@
 require('../scss/shop_index.scss');
 
+const itemContainer = document.querySelector('.item-container');
+const prototype = itemContainer.querySelector('.item-prototype');
+const flash = document.querySelector('.flash');
+
 document.addEventListener('DOMContentLoaded', () => {
     initFetchCategory();
+    heroAnimation();
 })
+
+const heroAnimation = () => {
+    const svg = document.querySelector('svg');
+    document.querySelector('.hero').addEventListener('mousemove', (e) => {
+        svg.style.left = e.clientX;
+    })
+    document.querySelector('.hero').addEventListener('mouseleave', () => {
+        svg.style.left = '50%';
+    })
+}
 
 const initFetchCategory = () => {
     const categoryLinks = Array.from(document.querySelectorAll('.category-container .category'));
@@ -12,6 +27,7 @@ const initFetchCategory = () => {
             e.preventDefault();
 
             const url = e.target.href;
+            itemContainer.classList.add('loading');
 
             fetch(url, {
                 headers: {
@@ -20,7 +36,33 @@ const initFetchCategory = () => {
             }).then(res => {
                 if (res.ok) {
                     res.json().then(data => {
-                        console.log(JSON.parse(data['items']));
+                        const items = data.items?.map(item => JSON.parse(item));
+
+                        while (itemContainer.querySelector('.item')) {
+                            itemContainer.removeChild(itemContainer.querySelector('.item'));
+                        }
+
+                        if (items) {
+                            flash.classList.add('disabled')
+
+
+                            for (let i = 0; i < items.length; i++) {
+                                const clone = prototype.cloneNode(true);
+                                let href = clone.querySelector('a').href;
+
+                                href = href.replace('%slug%', items[i].slug);
+                                clone.querySelector('.title').innerText = items[i].name;
+                                clone.querySelector('img').src = data['covers'][i];
+                                clone.querySelector('.price').innerText = items[i].price;
+                                clone.classList.replace('item-prototype', 'item');
+
+                                itemContainer.appendChild(clone);
+                            }
+                        } else {
+                            flash.classList.remove('disabled');
+                        }
+
+                        itemContainer.classList.remove('loading');
                     })
                 } else {
                     console.error('smth happened')

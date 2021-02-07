@@ -15,7 +15,7 @@ homepage:
 
 item:
   type:
-    mural_decoration: Décoration mural
+    mural_decoration: Décoration murale
     pillow: Coussin
     carpet: Tapis
     other: Autre
@@ -27,7 +27,7 @@ item:
 
 shop:
   category:
-    mural_decoration: Décoration mural
+    mural_decoration: Décoration murale
     pillow: Coussin
     carpet: Tapis
     other: Autre

@@ -26,6 +26,12 @@ item:
   sold: Vendu
 
 shop:
+  category:
+    mural_decoration: Décoration mural
+    pillow: Coussin
+    carpet: Tapis
+    other: Autre
+    no_item: Il n'y a actuellement pas d'élément dans cette catégorie
   no_shipping:
     button: Vous préférez le retrait sur place ?
     description: En choisissant le retrait sur place, le coût d'expédition sera soustrait du montant total.

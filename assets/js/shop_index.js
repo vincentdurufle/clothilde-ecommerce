@@ -54,8 +54,9 @@ const initFetchCategory = () => {
                                 link.href = link.getAttribute('href').replace(/slug/gi, items[i].slug);
                                 clone.querySelector('.title').innerText = items[i].name;
                                 clone.querySelector('img').src = data['covers'][i];
-                                clone.querySelector('.price').innerText = items[i].price;
+                                clone.querySelector('.price').innerText = priceFormatter(items[i].price);
                                 clone.classList.replace('item-prototype', 'item');
+
                                 if (!items[i].sold) {
                                     clone.querySelector('.sold-title').remove();
                                 }
@@ -76,4 +77,13 @@ const initFetchCategory = () => {
             })
         })
     }
+}
+
+const priceFormatter = (int) => {
+    const formatter = new Intl.NumberFormat('fr-FR', {
+        style: 'currency',
+        currency: 'EUR',
+    });
+
+    return formatter.format(int);
 }

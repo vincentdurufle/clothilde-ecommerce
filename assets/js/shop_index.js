@@ -26,6 +26,8 @@ const initFetchCategory = () => {
         category.addEventListener('click', (e) => {
             e.preventDefault();
 
+            if (itemContainer.classList.contains('loading')) return;
+
             const url = e.target.href;
             itemContainer.classList.add('loading');
 
@@ -45,16 +47,18 @@ const initFetchCategory = () => {
                         if (items) {
                             flash.classList.add('disabled')
 
-
                             for (let i = 0; i < items.length; i++) {
                                 const clone = prototype.cloneNode(true);
-                                let href = clone.querySelector('a').href;
+                                let link = clone.querySelector('a');
 
-                                href = href.replace('%slug%', items[i].slug);
+                                link.href = link.getAttribute('href').replace(/slug/gi, items[i].slug);
                                 clone.querySelector('.title').innerText = items[i].name;
                                 clone.querySelector('img').src = data['covers'][i];
                                 clone.querySelector('.price').innerText = items[i].price;
                                 clone.classList.replace('item-prototype', 'item');
+                                if (!items[i].sold) {
+                                    clone.querySelector('.sold-title').remove();
+                                }
 
                                 itemContainer.appendChild(clone);
                             }

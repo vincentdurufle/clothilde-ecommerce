@@ -39,6 +39,7 @@
     ul {
       display: flex;
       justify-content: space-evenly;
+      padding-left: 0;
       li {
         list-style: none;
         .category {
@@ -100,10 +101,6 @@
       width: 3rem;
       height: 3rem;
     }
-  }
-
-  @include media-breakpoint-down(sm) {
-    flex-direction: column;
   }
 
   .item {
@@ -214,5 +211,33 @@
     bottom: 50%;
     right: 50%;
     opacity: 1;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .hero {
+    height: 300px !important;
+    .title {
+      font-size: 3rem !important;
+      width: 100%;
+      text-align: center;
+    }
+  }
+  .category-container {
+    padding: 0 !important;
+    ul {
+      flex-direction: column;
+      text-align: center;
+      li {
+        margin: .2rem 0;
+      }
+    }
+  }
+  svg {
+    display: none;
+  }
+  .item-container {
+    //margin: 0;
+    flex-direction: column;
   }
 }

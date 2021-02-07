@@ -18,6 +18,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
@@ -102,7 +103,7 @@ class ShopController extends AbstractController
         $response = [];
         foreach ($items as $item) {
             $path = $this->uploaderHelper->asset($item, 'coverFile');
-            $response['items'][] = $this->serializer->serialize($item, 'json');
+            $response['items'][] = $this->serializer->serialize($item, 'json', [AbstractNormalizer::IGNORED_ATTRIBUTES => ['images']]);
             $response['covers'][] = $this->cacheManager->getBrowserPath($path, sprintf('%s', 'cover'));
         }
 

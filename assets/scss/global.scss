@@ -89,6 +89,12 @@ form.login {
   text-align: center;
   font-size: .7rem;
   text-transform: uppercase;
+  @include media-breakpoint-down(sm) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
   a:visited,
   a:link {
     color: $gray;
@@ -97,5 +103,8 @@ form.login {
       color: darken($gray, 10%);
       transition: color .3s;
     }
+  }
+  span {
+    color: $gray;
   }
 }

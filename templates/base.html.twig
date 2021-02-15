@@ -44,7 +44,11 @@
                 {% endfor %}
                 {% block body %}{% endblock %}
             </div>
-            <div class="footer"><a href="{{ path('legals_show') }}">{{ 'legals'|trans }}</a></div>
+            <div class="footer">
+                <a href="{{ path('legals_show') }}">{{ 'legals'|trans }}</a>
+                <span>-</span>
+                <span> © Clotilde Puy - {{ 'footer.reserved'|trans }}</span>
+            </div>
         </main>
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}

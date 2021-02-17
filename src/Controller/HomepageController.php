@@ -17,7 +17,7 @@ class HomepageController extends AbstractController
     public function index(): Response
     {
         $entityManager = $this->getDoctrine()->getRepository(Item::class);
-        $lastItem = $entityManager->findOneBy([], ['createdAt' => 'DESC']);
+        $lastItem = $entityManager->findOneBy(['disabled' => false, 'sold' => false], ['createdAt' => 'DESC']);
 
         return $this->render('homepage/index.html.twig', [
             'item' => $lastItem

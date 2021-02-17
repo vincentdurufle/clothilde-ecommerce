@@ -10,6 +10,7 @@ homepage:
   project:
     description: Clotilde Puy est une designer textile qui utilise la technique du tissage et du tuftage pour créer des objets de décoration uniques et entièrement faits à la main.
   latest: Dernière création
+  no_content: Il n'y a actuellement pas de nouveauté, revenez bientôt !
   btn:
     shop: Acheter
 

@@ -9,7 +9,7 @@ homepage:
     description: Weaving and tufting made in France
   project:
     description: Clotilde Puy is a french textile designer based in Paris. She uses weaving and tufting to create rugs and interior objects. Every piece is unique and handmade with heart.
-
+  no_content: There are no new items, please come back soon !
   latest: Latest creation
   btn:
     shop: Buy now

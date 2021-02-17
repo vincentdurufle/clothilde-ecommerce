@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     imagesContainer.dataset.index = index.toString();
     document.querySelector('.cover').addEventListener('change', previewFile)
     document.querySelector('.add-image').addEventListener('click', addImage)
+    // document.querySelector('form').addEventListener('submit', handleDeleteOnSubmit);
 })
 
 const previewFile = (e) => {
@@ -22,8 +23,21 @@ const previewFile = (e) => {
 
 const addImage = () => {
     let prototypeClone = prototype.replaceAll('__name__', index);
+
     imagesContainer.dataset.index = (index + 1).toString();
     imagesContainer.insertAdjacentHTML('beforeend', `<div>${prototypeClone}</div>`)
     document.querySelector(`#item_images_${index}_imageFile_file`).addEventListener('change', previewFile)
     index += 1;
+}
+
+const handleDeleteOnSubmit = (e) => {
+    const deletions = Array.from(document.querySelectorAll('.vich-image .form-group input:not(#item_coverFile_delete)'));
+
+    if (deletions.length > 0) {
+        for (const deletion of deletions) {
+            if (deletion.checked) {
+                deletion.closest('.vich-image').firstChild.remove();
+            }
+        }
+    }
 }

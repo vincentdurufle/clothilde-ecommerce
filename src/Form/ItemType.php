@@ -72,7 +72,7 @@ class ItemType extends AbstractType
                 'required' => false
             ])
             ->add('submit', SubmitType::class, [
-                'attr' => ['class' => 'btn btn-primary w-100']
+                'attr' => ['class' => 'btn btn-primary w-100 submit']
             ]);
     }
 

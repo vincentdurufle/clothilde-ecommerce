@@ -82,7 +82,7 @@ class ShopController extends AbstractController
      */
     public function index(): Response
     {
-        $items = $this->repository->findAll();
+        $items = $this->repository->findBy(['disabled' => false]);
 
         return $this->render('shop/index.html.twig', [
             'items' => $items
@@ -98,7 +98,7 @@ class ShopController extends AbstractController
      */
     public function category(string $category): JsonResponse
     {
-        $items = $this->repository->findBy(['type' => $category]);
+        $items = $this->repository->findBy(['type' => $category, 'disabled' => false]);
 
         $response = [];
         foreach ($items as $item) {

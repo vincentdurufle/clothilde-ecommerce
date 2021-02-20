@@ -9,7 +9,7 @@ homepage:
     description: Weaving and tufting made in France
   project:
     description: Clotilde Puy is a french textile designer based in Paris. She uses weaving and tufting to create rugs and interior objects. Every piece is unique and handmade with heart.
-
+  no_content: There are no new items, please come back soon !
   latest: Latest creation
   btn:
     shop: Buy now
@@ -65,23 +65,22 @@ legals: Terms of sale
 
 conditions:
   delivery:
-    title: "Envoie et livraison des colis :"
+    title: "Sending and delivery :"
     content: >
-      Livraison en France Métropolitaine et Europe.
-      Les frais de port varient en fonction de la taille et du poids du colis.
-      Tous les envoies se font par la poste colissimo avec numéro de suivi.
-      Pour une livraison à l’internationale ou en France outre-mer, veuillez me contacter directement par mail: clotildepuy.contact@gmail.com
-    content_2: Les colis sont envoyés entre 1 à 3 jours ouvrés après la date de l’achat.
+      Delivery in mainland France and Europe. Shipping costs depend on the size and weight of the package.
+      All shipments are made by colissimo post with tracking number.
+      For international delivery or overseas France, please contact me directly by email: clotildepuy.contact@gmail.com
+    content_2: Packages are sent between 1 to 3 working days after the date of purchase.
   refund:
-    title: "Retour et remboursement:"
-    content: Les retours sont acceptés uniquement pour les produits endommagés pendant la livraison.
-    content_2: Les remboursements sont effectués uniquement pour les produits perdus pendant la livraison.
+    title: "Return and refund :"
+    content: Returns are accepted only for products damaged during delivery.
+    content_2: Refunds are made only for lost products during delivery.
   products:
-    title: "Particularité des produits:"
+    title: "Special feature of the products :"
     content: >
-      Chaque produit est unique et entièrement réalisé par Clotilde Puy dans son atelier parisien.
-      Ces pièces d’artisanat nécessitent d’être manipulées avec soin. Aucun produit n’est lavable en machine.
-      Pour l’entretien, veuillez privilégier le pressing.
+      Each product is unique and entirely made by Clotilde Puy in her Parisian workshop.
+      These pieces of craftsmanship must be handled with care. No product is machine washable.
+      For caring, please use the dry cleaning service.
 
 about:
   header: Hello, <br>I'm Clotilde Puy
@@ -112,3 +111,6 @@ portfolio:
     tufting: Tufting
     weaving: Weaving
     japan: Japan
+
+footer:
+  reserved: All rights reserved

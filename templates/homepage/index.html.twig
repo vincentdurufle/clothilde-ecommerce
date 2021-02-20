@@ -32,6 +32,10 @@
                         <h3 class="item-title">{{ item.name }}</h3>
                         <img src="{{ vich_uploader_asset(item, 'coverFile') | imagine_filter('cover') }}" alt="{{ item.name }}">
                         <a href="{{ path('shop_item_show', {'slug': item.slug}) }}" class="shop-item btn btn-light btn-lg">{{ 'homepage.btn.shop'|trans }}</a>
+                    {% else %}
+                        <div class="no-content">
+                            <p class="alert alert-light">{{ 'homepage.no_content'|trans }}</p>
+                        </div>
                     {% endif %}
                 </div>
             </div>

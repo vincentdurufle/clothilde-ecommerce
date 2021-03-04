@@ -15,7 +15,7 @@
             </div>
             <div class="right">
                 <div class="square">
-                    <img class="layer" data-depth="0.1" src="{{ asset('img/homepage-tapis-min.png') }}" alt="Clotilde Puy tapis sample">
+                    {{ source('@public_path'~asset('img/volcan.svg')) }}
                 </div>
             </div>
             <a href="#1" class="arrow-link">
@@ -24,12 +24,18 @@
         </section>
         <section class="last-project-container row no-gutters">
             <div class="left">
-                <div class="item">
-                    {% if item %}
-                        <h2 class="title">{{ 'homepage.latest'|trans }}</h2>
-                        <h3 class="item-title">{{ item.name }}</h3>
-                        <img src="{{ vich_uploader_asset(item, 'coverFile') | imagine_filter('cover') }}" alt="{{ item.name }}">
-                        <a href="{{ path('shop_item_show', {'slug': item.slug}) }}" class="shop-item btn btn-light btn-lg">{{ 'homepage.btn.shop'|trans }}</a>
+                <div class="items">
+                    {% if items %}
+                        <div class="keen-slider">
+                            {% for item in items %}
+                                <div class="item keen-slider__slide number-slide{{ loop.index }}">
+                                    <h2 class="title">{{ 'homepage.latest'|trans }}</h2>
+                                    <h3 class="item-title">{{ item.name }}</h3>
+                                    <img src="{{ vich_uploader_asset(item, 'coverFile') | imagine_filter('cover') }}" alt="{{ item.name }}">
+                                    <a href="{{ path('shop_item_show', {'slug': item.slug}) }}" class="shop-item btn btn-light btn-lg">{{ 'homepage.btn.shop'|trans }}</a>
+                                </div>
+                            {% endfor %}
+                        </div>
                     {% else %}
                         <div class="no-content">
                             <p class="alert alert-light">{{ 'homepage.no_content'|trans }}</p>
@@ -41,6 +47,28 @@
                 <div class="description">
                     <h3>{{ 'homepage.project.description'|trans }}</h3>
                 </div>
+            </div>
+        </section>
+        <section class="contact-container row no-gutters">
+            <div class="contact">
+                {{ form_start(contactForm) }}
+                    <h1 class="title">{{ 'homepage.contact.title'|trans }}</h1>
+                    <div class="form-group">
+                        {{ form_widget(contactForm.name) }}
+                        {{ form_label(contactForm.name) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_widget(contactForm.email) }}
+                        {{ form_label(contactForm.email) }}
+                    </div>
+                    <div class="form-group description">
+                        {{ form_widget(contactForm.content) }}
+                        {{ form_label(contactForm.content) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_widget(contactForm.submit, {'attr': {'class': 'btn-light w-100'}}) }}
+                    </div>
+                {{ form_end(contactForm) }}
             </div>
         </section>
     </div>

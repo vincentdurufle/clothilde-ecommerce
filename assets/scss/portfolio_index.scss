@@ -1,0 +1,162 @@
+@import 'variables';
+@import 'mixins';
+@import '~keen-slider/keen-slider.min.css';
+@import '~bootstrap/scss/bootstrap-grid';
+
+.content {
+  padding: 0;
+}
+
+body {
+  animation: 20s ease-in infinite background-animation;
+}
+
+.section {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.landing-container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+
+  .anchors {
+    position: relative;
+    &:hover .links {
+      opacity: 1;
+      transition: opacity .5s .3s;
+    }
+    .links {
+      position: absolute;
+      display: flex;
+      left: 50%;
+      transform: translate(-50%, 0%);
+      opacity: 0;
+      transition: opacity .5s .3s;
+    }
+    a {
+      text-decoration: none;
+      color: $white;
+      font-size: 1.5rem;
+      text-align: center;
+      margin: 0.5rem 1rem;
+      text-transform: uppercase;
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  .header {
+    color: $white;
+    font-size: 3rem;
+    &.underline{
+      position: relative;
+    }
+    &.underline::before{
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 0;
+      height: 3px;
+      background-color: $white;
+      transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      &.underline:hover::before{
+        left: 0;
+        right: auto;
+        width: 100%;
+      }
+    }
+  }
+  i {
+    @include arrow-down;
+    color: $white;
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.section {
+  position: relative;
+  flex-wrap: wrap;
+
+  .title {
+    font-size: 2.5rem;
+    color: $white;
+    width: 100%;
+    text-align: center;
+  }
+  [class^="number-slide"],
+  [class*=" number-slide"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    color: #fff;
+    font-weight: 500;
+    height: 300px;
+    width: auto;
+  }
+  .img-container {
+    img {
+      object-fit: contain;
+    }
+  }
+
+  .text {
+    width: 60%;
+    margin: 2rem 0 4rem;
+    font-size: 1.5rem;
+    p {
+      color: $white;
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.footer {
+  span, a {
+    color: $white !important;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .section {
+    .text {
+      width: calc(100% - 4rem);
+    }
+  }
+}
+
+@keyframes background-animation {
+  0% {
+    background-color: darken($blue, 15%);
+  }
+  25% {
+    background-color: darken($pink, 15%);
+  }
+  50% {
+    background-color: darken($green, 15%);
+  }
+  75% {
+    background-color: darken(#95B1AF, 15%);
+  }
+  100% {
+    background-color: darken($blue, 15%);
+  }
+}

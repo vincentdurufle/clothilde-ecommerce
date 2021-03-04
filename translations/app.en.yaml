@@ -105,5 +105,12 @@ about:
       content: Content
       submit: Submit
 
+portfolio:
+  title: Tufting
+  anchors:
+    tufting: Tufting
+    weaving: Weaving
+    japan: Japan
+
 footer:
   reserved: All rights reserved

@@ -1,9 +1,23 @@
 @import 'variables';
 @import 'mixins';
+@import '~keen-slider/keen-slider.min.css';
+@import '~bootstrap/scss/bootstrap-grid';
 
 .content {
   padding: 0;
-  background-color: $blue;
+}
+
+body {
+  animation: 20s ease-in infinite background-animation;
+}
+
+.section {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .landing-container {
@@ -45,8 +59,6 @@
   .header {
     color: $white;
     font-size: 3rem;
-
-
     &.underline{
       position: relative;
     }
@@ -79,54 +91,72 @@
   }
 }
 
-.tufting-container {
-  min-height: 100vh;
-  width: 100%;
+.section {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  flex-wrap: wrap;
 
   .title {
     font-size: 2.5rem;
     color: $white;
+    width: 100%;
+    text-align: center;
+  }
+  [class^="number-slide"],
+  [class*=" number-slide"] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    color: #fff;
+    font-weight: 500;
+    height: 300px;
+    width: auto;
   }
   .img-container {
-    align-self: flex-end;
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 3rem;
-    min-height: 100vh;
-  }
-  img {
-    object-fit: contain;
-    height: 100%;
-    position: absolute;
-    &.tall {
-      width: 30%;
-      left: 50%;
-    }
-    &.medium {
-      width: 30%;
-      left: 50%;
-      bottom: 3%;
-    }
-    &.small {
-      width: 30%;
-      left: 5%;
-      bottom: 5%;
-      z-index: 11;
+    img {
+      object-fit: contain;
     }
   }
 
   .text {
-    width: 40%;
+    width: 60%;
+    margin: 2rem 0 4rem;
+    font-size: 1.5rem;
     p {
       color: $white;
       font-size: 1.5rem;
     }
+  }
+}
+
+.footer {
+  span, a {
+    color: $white !important;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .section {
+    .text {
+      width: calc(100% - 4rem);
+    }
+  }
+}
+
+@keyframes background-animation {
+  0% {
+    background-color: darken($blue, 15%);
+  }
+  25% {
+    background-color: darken($pink, 15%);
+  }
+  50% {
+    background-color: darken($green, 15%);
+  }
+  75% {
+    background-color: darken(#95B1AF, 15%);
+  }
+  100% {
+    background-color: darken($blue, 15%);
   }
 }

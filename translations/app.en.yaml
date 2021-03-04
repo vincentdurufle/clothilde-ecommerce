@@ -111,6 +111,14 @@ portfolio:
     tufting: Tufting
     weaving: Weaving
     japan: Japan
+  tufting_first: Le tuftage est une technique qui permet de fabriquer des tapis en piquant des fils de laine à travers une toile canevas. Ainsi, je réalise des tapis, coussins et décorations murales au moyen d’un pistolet à tufter. Ce procédé permet une variation de couleurs et motifs infinis et offre des surfaces confortables et de haute qualité.<br><br> J’attache beaucoup d’importance aux finitions et veille à ce que chaque pièce soit unique et originale.
+  tufting_second: J’ai à cœur de pouvoir réaliser des commandes personnalisées et sur-mesure. Le client alors a une liberté de choix dans les dimensions, les couleurs et les motifs correspondant à mon esthétique.
+  weaving:
+    first_p: Je confectionne des tissages haut de gamme et sur-mesure. Les tissus sont fabriqués sur un métier à tisser à cadre manuel, permettant un large choix de matières, de couleurs et de motifs.
+    second_p: "Cette technique permet de créer une variété de produits de décoration d’intérieur: housses de fauteuils, rideaux, coussins, plaids, tapis, décorations murales etc. Chaque produit est unique."
+    third_p: Je réalise également des commandes personnalisées en adaptant la technique à la demande du client (choix des motifs, des fils, des couleurs).
+  japan:
+    first_p: En 2019 j’ai effectué un workshop de plusieurs mois aux côtés de l’artiste Keiko Fukui. J’ai séjourné dans son atelier situé dans la province de Shiga, aux pieds des montagnes et non loin du Lac Biwa. <br> <br> Là, l’artiste m’a initiée à la technique du katazomé. Il s’agit d’une méthode d’impression traditionnelle. Au cours de ce workshop, j’ai confectionné des koinobori (banderoles en forme de carpes).
 
 footer:
   reserved: All rights reserved

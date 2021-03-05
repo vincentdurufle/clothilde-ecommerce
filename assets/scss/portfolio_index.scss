@@ -98,8 +98,9 @@ body {
   .title {
     font-size: 2.5rem;
     color: $white;
-    width: 100%;
+    width: calc(100% - 1rem);
     text-align: center;
+    margin: 1.5rem .5rem;
   }
   [class^="number-slide"],
   [class*=" number-slide"] {
@@ -109,12 +110,13 @@ body {
     font-size: 50px;
     color: #fff;
     font-weight: 500;
-    height: 300px;
+    height: 400px;
     width: auto;
   }
   .img-container {
     img {
-      object-fit: contain;
+      object-fit: cover;
+      width: auto;
     }
   }
 
@@ -125,6 +127,7 @@ body {
     p {
       color: $white;
       font-size: 1.5rem;
+      text-align: justify;
     }
   }
 }
@@ -146,9 +149,6 @@ body {
 @keyframes background-animation {
   0% {
     background-color: darken($blue, 15%);
-  }
-  25% {
-    background-color: darken($pink, 15%);
   }
   50% {
     background-color: darken($green, 15%);

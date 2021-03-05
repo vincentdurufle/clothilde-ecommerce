@@ -10,37 +10,19 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb796b33-a08f-485a-8f6b-b920c21568de" name="Default Changelist" comment="add trad + span in footer">
-      <change afterPath="$PROJECT_DIR$/public/img/portfolio/01-min.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/portfolio/japan-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/portfolio/japan-2.JPG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/portfolio/japan-3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/portfolio/japan-4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/portfolio/tapis-min.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/portfolio/tissage01.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/portfolio/tissage02.JPG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/portfolio/tissage03.JPG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/portfolio/tissage05.JPG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/portfolio/volcan-min.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/volcan.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    <list default="true" id="fb796b33-a08f-485a-8f6b-b920c21568de" name="Default Changelist" comment="add portfolio eng">
+      <change afterPath="$PROJECT_DIR$/public/img/portfolio/tuftage01.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/portfolio/tuftage02.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/portfolio/tuftage03.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/portfolio/tuftage06.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/homepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/homepage.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/portfolio_index.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/portfolio_index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/scss/_variables.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scss/_variables.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/scss/homepage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scss/homepage.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/scss/portfolio_index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scss/portfolio_index.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/twig.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/twig.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/portfolio/tuftage01.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/portfolio/tuftage02.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/portfolio/tuftage03.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/HomepageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomepageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/homepage/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/homepage/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/portfolio/01-min.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/portfolio/tapis-min.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/portfolio/tuftage04.JPG" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/portfolio/volcan-min.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/portfolio/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/portfolio/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/translations/app.fr.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/translations/app.fr.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -259,7 +241,8 @@
       <workItem from="1614529712003" duration="4247000" />
       <workItem from="1614624415786" duration="4084000" />
       <workItem from="1614712343138" duration="6482000" />
-      <workItem from="1614883973567" duration="758000" />
+      <workItem from="1614883973567" duration="2326000" />
+      <workItem from="1614969589848" duration="1754000" />
     </task>
     <task id="LOCAL-00001" summary="dfgdfg">
       <created>1606776382439</created>
@@ -436,7 +419,28 @@
       <option name="project" value="LOCAL" />
       <updated>1613392988771</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="portfolio final + refacto homepage">
+      <created>1614884780684</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1614884780685</updated>
+    </task>
+    <task id="LOCAL-00027" summary="remove parallax">
+      <created>1614885426592</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1614885426592</updated>
+    </task>
+    <task id="LOCAL-00028" summary="add portfolio eng">
+      <created>1614885670585</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1614885670585</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -477,6 +481,9 @@
     <MESSAGE value="fix murale" />
     <MESSAGE value="git pull + res conf" />
     <MESSAGE value="add trad + span in footer" />
-    <option name="LAST_COMMIT_MESSAGE" value="add trad + span in footer" />
+    <MESSAGE value="portfolio final + refacto homepage" />
+    <MESSAGE value="remove parallax" />
+    <MESSAGE value="add portfolio eng" />
+    <option name="LAST_COMMIT_MESSAGE" value="add portfolio eng" />
   </component>
 </project>

@@ -18,13 +18,13 @@ const initKeenSliders = () => {
     for (const slider of sliders) {
         const options = {
             slidesPerView: 3,
-            mode: 'snap',
-            spacing: 15,
+            mode: 'free-snap',
+            spacing: 10,
             loop: true,
-            centered: true,
             breakpoints: {
                 '(max-width: 768px)': {
-                    slidesPerView: 1
+                    slidesPerView: 1,
+                    spacing: 0,
                 }
             },
             duration: 1000,
@@ -37,7 +37,7 @@ const initKeenSliders = () => {
         }
         const sliderInstance = new KeenSlider(slider, options);
 
-        let interval = 0
+        let interval = 0;
 
         const autoplay = (run) => {
             clearInterval(interval)

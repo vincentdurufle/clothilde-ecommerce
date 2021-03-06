@@ -18,9 +18,8 @@ const initKeenSliders = () => {
     for (const slider of sliders) {
         const options = {
             slidesPerView: 3,
+            spacing: 15,
             mode: 'free-snap',
-            spacing: 10,
-            loop: true,
             breakpoints: {
                 '(max-width: 768px)': {
                     slidesPerView: 1,

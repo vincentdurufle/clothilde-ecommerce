@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         animateFunction: "ease",
     });
 
-    if (sliderElement) {
+    if (sliderElement && sliderElement.children.length > 1) {
         initAutoplaySlider();
     }
     initSvgAnimation();

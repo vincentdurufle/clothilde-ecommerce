@@ -47,6 +47,7 @@ admin:
 btn:
   buy: Buy
   close: Close
+  add_to_cart: Add to cart
 
 mail:
   success:

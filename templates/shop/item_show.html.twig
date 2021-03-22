@@ -60,6 +60,7 @@
                     </ul>
                 </div>
                 {% if not item.sold %}
+                    <a href="{{ path('add_item_cart', {'slug': item.slug}) }}" class="btn btn-lg btn-secondary add-item">{{ 'btn.add_to_cart'|trans }}</a>
                     <button id="checkout-button" class="buy btn btn-lg btn-secondary"
                             data-href="{{ path('checkout_session', {'slug': item.slug}) }}"
                             data-stripe="{{ stripe_public_key }}"
@@ -91,6 +92,14 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="toast" style="position: absolute; top: 0; right: 0;">
+            <div class="toast-header">
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="toast-body"></div>
         </div>
     </div>
 {% endblock %}

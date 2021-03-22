@@ -43,6 +43,7 @@ shop:
 btn:
   buy: Acheter
   close: Fermer
+  add_to_cart: Ajouter au panier
 
 order:
   success:

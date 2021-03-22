@@ -1,15 +1,33 @@
 require('../scss/item_show.scss');
+const $ = require('jquery');
 
 import KeenSlider from "keen-slider";
 
+const addBtn = document.querySelector('.add-item');
+const checkoutBtn = document.querySelector('#checkout-button');
+
 document.addEventListener('DOMContentLoaded', () => {
     initSlider();
-    const checkoutBtn = document.querySelector('#checkout-button');
     if (checkoutBtn) {
         checkoutBtn.addEventListener('click', checkout);
         document.querySelector('.no-shipping-buy').addEventListener('click', checkout);
+        addBtn.addEventListener('click', addItem);
     }
 })
+
+const addItem = (e) => {
+    e.preventDefault();
+
+    if (!addBtn.classList.contains('disabled')) {
+        addBtn.classList.add('disabled')
+
+        fetch(e.target.href).then(res => {
+            if (res.ok) {
+                $('.toast').toast('show');
+            }
+        }).catch(err => console.error(err))
+    }
+}
 
 const checkout = (e) => {
     const stripe = Stripe(e.target.dataset.stripe);

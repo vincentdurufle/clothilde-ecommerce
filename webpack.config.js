@@ -37,6 +37,8 @@ Encore
     .addEntry('legals', './assets/js/legals.js')
     .addEntry('about', './assets/js/about.js')
     .addEntry('portfolio_index', './assets/js/portfolio_index.js')
+    .addEntry('collaboration_index', './assets/js/collaboration_index.js')
+    .addEntry('collaboration_form', './assets/js/collaboration_form.js')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()

@@ -113,3 +113,18 @@ portfolio:
 
 footer:
   reserved: Tous droits réservés
+
+cart:
+  no_items: Il n'y as actuellement pas d'éléments dans votre panier
+  size: Taille
+  price: Prix
+  remove: Supprimer
+  price_details: Détails prix
+  checkout: Finaliser votre commande
+  shipping: "Pour terminer votre commande merci de choisir une destination pour la livraison:"
+  overview: Récapitulatif de votre commande
+  total_amount: Montant total
+  destination:
+    fr: France
+    eu: Europe
+    ww: En dehors de l'Europe

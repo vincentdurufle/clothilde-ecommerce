@@ -1,0 +1,49 @@
+@import 'variables';
+
+.cart-container {
+  width: 100%;
+  min-height: 100vh;
+  padding: 4rem;
+  border-radius: 50%;
+  h1 {
+    text-decoration: underline;
+    margin-bottom: 1.5rem;
+  }
+  .total-amount {
+    background-color: $light-gray;
+    padding: .5rem;
+    border-radius: .25rem;
+    display: flex;
+    justify-content: space-between;
+    span {
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.card {
+  margin: 1.5rem 0;
+  box-shadow: $light-shadow;
+  width: 100%;
+  .img-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: .25rem solid $primary;
+    border-bottom: .25rem solid $primary;
+    border-left: .25rem solid $primary;
+  }
+  .info-container {
+    border-top: .25rem solid $primary;
+    border-bottom: .25rem solid $primary;
+    border-right: .25rem solid $primary;
+  }
+  img {
+    width: auto;
+    height: 200px;
+  }
+  .card-title {
+    text-transform: uppercase;
+  }
+}

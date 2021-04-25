@@ -58,7 +58,12 @@ class CartController extends AbstractController
      */
     public function index(): Response
     {
-        $items = $this->repository->findBy(['disabled' => false]);
+        $slugs = json_decode($this->session->get(self::CART_SESSION), false);
+
+        $items = $this->repository->findBy([
+            'disabled' => false,
+            'slug' => $slugs
+        ]);
 
         return $this->render('shop/cart.html.twig', [
             'items' => $items
@@ -77,6 +82,11 @@ class CartController extends AbstractController
 
         if ($sessionItems) {
             $items = json_decode($sessionItems, false);
+
+            if (in_array($slug, $items, true)) {
+                return new JsonResponse(null, Response::HTTP_ALREADY_REPORTED);
+            }
+
             $items[] = $slug;
         } else {
             $items = [$slug];

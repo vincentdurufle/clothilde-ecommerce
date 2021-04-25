@@ -7,7 +7,57 @@
 {% endblock %}
 
 {% block body %}
-
+    <div class="cart-container container">
+        <h1>{{ 'cart.overview'|trans }}</h1>
+        <form>
+            <div class="form-group">
+                <label for="destinationSelection">{{ 'cart.shipping'|trans }}</label>
+                <select class="form-control" id="destinationSelection">
+                    {% set destinations = ['fr', 'eu', 'ww'] %}
+                    {% for destination in destinations %}
+                        <option value="{{ destination }}">{{ ('cart.destination.' ~ destination)|trans }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </form>
+        {% if items is not empty %}
+            {% for item in items %}
+                <div class="card">
+                    <div class="row no-gutters">
+                        <div class="col-md-4 img-container">
+                            <img src="{{ vich_uploader_asset(item, 'coverFile') | imagine_filter('thumb') }}" alt="{{ item.name }}">
+                        </div>
+                        <div class="col-md-8 info-container">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ item.name }}</h5>
+                                <p class="card-text item-price" data-price="{{ item.price }}">{{ 'cart.price'|trans }}: {{ item.price|format_currency('EUR') }}</p>
+                                <div class="form-group">
+                                    <label for="shipping{{ loop.index }}">Shipping</label>
+                                    <select disabled class="form-control" name="shipping{{ loop.index }}" id="shipping{{ loop.index }}">
+                                        {% for destination, price in item.allShippingFees %}
+                                            <option {{ destination == 'fr' ? 'selected' }} class="{{ price is null ? 'unavailable' }}" data-price="{{ price }}" data-destination="{{ destination }}" value="{{ destination }}">{{ price ? price|format_currency('EUR') : 0 }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <p class="card-text"><small class="text-muted">{{ 'cart.size'|trans }}: {{ item.size }}</small></p>
+                                <hr>
+                                <a href=""><i class="fas fa-trash-alt"></i> {{ 'cart.remove'|trans }}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="total">
+                <p><strong>{{ 'cart.price_details'|trans }}</strong></p>
+                <p class="total-amount"><span>{{ 'cart.total_amount'|trans }}</span><span class="price"></span></p>
+                <a href="" class="checkout btn btn-primary" type="submit">{{ 'cart.checkout'|trans }}</a>
+            </div>
+        {% else %}
+            <div>
+                <p class="alert-info">{{ 'cart.no_items'|trans }}</p>
+            </div>
+        {% endif %}
+    </div>
 {% endblock %}
 
 {% block javascripts %}

@@ -14,3 +14,8 @@ liip_imagine:
                 thumbnail:
                     size: [1024, 1536]
                     mode: inset
+        thumb:
+            filters:
+                thumbnail:
+                    size: [250, 300]
+                    mode: inset

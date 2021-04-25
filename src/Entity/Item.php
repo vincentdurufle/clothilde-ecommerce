@@ -110,6 +110,16 @@ class Item
      */
     private $shippingFee;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $shippingFeeEurope;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $shippingFeeWorld;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime('now');
@@ -347,5 +357,38 @@ class Item
         $this->shippingFee = $shippingFee;
 
         return $this;
+    }
+
+    public function getShippingFeeEurope(): ?int
+    {
+        return $this->shippingFeeEurope;
+    }
+
+    public function setShippingFeeEurope(?int $shippingFeeEurope): self
+    {
+        $this->shippingFeeEurope = $shippingFeeEurope;
+
+        return $this;
+    }
+
+    public function getShippingFeeWorld(): ?int
+    {
+        return $this->shippingFeeWorld;
+    }
+
+    public function setShippingFeeWorld(?int $shippingFeeWorld): self
+    {
+        $this->shippingFeeWorld = $shippingFeeWorld;
+
+        return $this;
+    }
+
+    public function getAllShippingFees(): array
+    {
+        return [
+            'fr' => $this->shippingFee,
+            'eu' => $this->shippingFeeEurope,
+            'ww' => $this->shippingFeeWorld
+        ];
     }
 }

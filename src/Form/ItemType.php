@@ -38,6 +38,12 @@ class ItemType extends AbstractType
             ])
             ->add('price', MoneyType::class)
             ->add('shippingFee', MoneyType::class)
+            ->add('shippingFeeEurope', MoneyType::class, [
+                'required' => false
+            ])
+            ->add('shippingFeeWorld', MoneyType::class, [
+                'required' => false
+            ])
             ->add('descriptionEn', TextareaType::class)
             ->add('descriptionFr', TextareaType::class, [
                 'required' => false

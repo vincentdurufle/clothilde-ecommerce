@@ -40,8 +40,12 @@ nav {
       text-transform: uppercase;
       font-size: .8rem;
       font-family: $font-family-base;
+      line-height: 1.5rem;
     }
     margin: 0 .5rem;
+    .fa-shopping-cart {
+      font-size: 1.25rem;
+    }
   }
   margin: .5rem;
   border-radius: .25rem;

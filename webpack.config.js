@@ -37,6 +37,7 @@ Encore
     .addEntry('legals', './assets/js/legals.js')
     .addEntry('about', './assets/js/about.js')
     .addEntry('portfolio_index', './assets/js/portfolio_index.js')
+    .addEntry('cart', './assets/js/cart.js')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()

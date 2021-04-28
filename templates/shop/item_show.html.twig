@@ -60,37 +60,19 @@
                     </ul>
                 </div>
                 {% if not item.sold %}
-                    <button id="checkout-button" class="buy btn btn-lg btn-secondary"
-                            data-href="{{ path('checkout_session', {'slug': item.slug}) }}"
-                            data-stripe="{{ stripe_public_key }}"
-                    >
-                        {{ 'btn.buy'|trans }}
-                    </button>
-                    <button type="button" class="btn" data-toggle="modal" data-target="#noShipping">{{ 'shop.no_shipping.button'|trans }}</button>
+                    <a href="{{ path('add_item_cart', {'slug': item.slug}) }}" class="btn buy btn-lg btn-secondary add-item">
+                        <span class="text">{{ 'btn.add_to_cart'|trans }}</span><span class="spinner-border spinner-border-sm"></span>
+                    </a>
                 {% endif %}
             </div>
         </div>
-        <div class="modal fade" id="noShipping" tabindex="-1" role="dialog" aria-labelledby="noShippingLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p>{{ 'shop.no_shipping.description'|trans }}</p>
-                        <p>{{ 'shop.no_shipping.pickup'|trans }}</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-light" data-dismiss="modal">{{ 'btn.close'|trans }}</button>
-                        <button type="button" class="btn btn-secondary no-shipping-buy"
-                            data-href="{{ path('checkout_session', {'slug': item.slug, 'shipping': false}) }}"
-                            data-stripe="{{ stripe_public_key }}"
-                        >{{ 'btn.buy'|trans }}</button>
-                    </div>
-                </div>
+        <div class="toast" data-delay="4000">
+            <div class="toast-header">
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
+            <div class="toast-body">Your item was successfully added to the cart</div>
         </div>
     </div>
 {% endblock %}

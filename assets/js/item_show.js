@@ -1,29 +1,38 @@
 require('../scss/item_show.scss');
-
 import KeenSlider from "keen-slider";
+const $ = require('jquery');
+
+const addBtn = document.querySelector('.add-item');
 
 document.addEventListener('DOMContentLoaded', () => {
     initSlider();
-    const checkoutBtn = document.querySelector('#checkout-button');
-    if (checkoutBtn) {
-        checkoutBtn.addEventListener('click', checkout);
-        document.querySelector('.no-shipping-buy').addEventListener('click', checkout);
+    if (addBtn) {
+        addBtn.addEventListener('click', addItem);
     }
 })
 
-const checkout = (e) => {
-    const stripe = Stripe(e.target.dataset.stripe);
-    fetch(e.target.dataset.href, {
-        method: 'POST'
-    }).then(res => res.json())
-        .then(session => {
-            return stripe.redirectToCheckout({ sessionId: session.id });
-        })
-        .then(result => {
-            if (result.error) {
-                alert(result.error.message)
+const addItem = (e) => {
+    e.preventDefault();
+
+    if (!addBtn.classList.contains('loading') || !addBtn.classList.contains('btn-success') || !addBtn.classList.contains('error')) {
+        addBtn.classList.add('loading');
+
+        fetch(e.target.href).then(res => {
+            if (res.ok) {
+                $('.toast').toast('show');
+                addBtn.classList.replace('loading', 'btn-success');
+                addBtn.innerHTML = '<i class="far fa-check-circle"></i>';
+
+                return;
             }
-        }).catch(err => console.error(err))
+
+            throw new Error();
+        }).catch(err => {
+            console.error(err);
+            addBtn.classList.replace('loading', 'error');
+            $('.toast').toast('show');
+        })
+    }
 }
 
 const initSlider = () => {

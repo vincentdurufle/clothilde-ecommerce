@@ -391,4 +391,21 @@ class Item
             'ww' => $this->shippingFeeWorld
         ];
     }
+
+    public function getOneShippingFee(string $destination): ?int
+    {
+        if ($destination === 'fr') {
+            return $this->shippingFee;
+        }
+
+        if ($destination === 'eu') {
+            return $this->shippingFeeEurope;
+        }
+
+        if ($destination === 'ww') {
+            return $this->shippingFeeWorld;
+        }
+
+        return 0;
+    }
 }

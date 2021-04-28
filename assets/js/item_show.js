@@ -1,10 +1,8 @@
 require('../scss/item_show.scss');
+import KeenSlider from "keen-slider";
 const $ = require('jquery');
 
-import KeenSlider from "keen-slider";
-
 const addBtn = document.querySelector('.add-item');
-const checkoutBtn = document.querySelector('#checkout-button');
 
 document.addEventListener('DOMContentLoaded', () => {
     initSlider();
@@ -35,21 +33,6 @@ const addItem = (e) => {
             $('.toast').toast('show');
         })
     }
-}
-
-const checkout = (e) => {
-    const stripe = Stripe(e.target.dataset.stripe);
-    fetch(e.target.dataset.href, {
-        method: 'POST'
-    }).then(res => res.json())
-        .then(session => {
-            return stripe.redirectToCheckout({ sessionId: session.id });
-        })
-        .then(result => {
-            if (result.error) {
-                alert(result.error.message)
-            }
-        }).catch(err => console.error(err))
 }
 
 const initSlider = () => {

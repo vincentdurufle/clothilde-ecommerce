@@ -125,7 +125,7 @@ footer:
   reserved: All rights reserved
 
 cart:
-  no_items: There is currently no items in your cart
+  no_items: Your cart is empty
   size: Size
   price: Price
   remove: Remove
@@ -134,7 +134,10 @@ cart:
   shipping: "To finish your order please select a destination:"
   overview: Order overview
   total_amount: Total amount
+  go_back: Shop now
+  local_pickup: You can choose to retrieve your item(s) at the shop
   destination:
+    no_shipping: Local pickup
     fr: France
     eu: Europe
     ww: Outside of Europe

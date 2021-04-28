@@ -24,16 +24,6 @@ class CartController extends AbstractController
     private $repository;
 
     /**
-     * @var EntityManagerInterface
-     */
-    private $entityManager;
-
-    /**
-     * @var SerializerInterface
-     */
-    private $serializer;
-
-    /**
      * @var SessionInterface
      */
     private $session;
@@ -97,5 +87,29 @@ class CartController extends AbstractController
         return new JsonResponse();
     }
 
+    /**
+     * @Route("/remove/{slug}", name="remote_item_cart")
+     *
+     * @param string $slug
+     * @return JsonResponse
+     */
+    public function removeItem(string $slug): JsonResponse
+    {
+        $sessionItems = $this->session->get(self::CART_SESSION);
 
+        if ($sessionItems) {
+            $items = json_decode($sessionItems, false);
+
+            if (in_array($slug, $items, true)) {
+                $idx = array_search($slug, $items, true);
+                if ($idx !== false) {
+                    array_splice($items, $idx);
+                }
+            }
+
+            $this->session->set(self::CART_SESSION, json_encode($items));
+        }
+
+        return new JsonResponse();
+    }
 }

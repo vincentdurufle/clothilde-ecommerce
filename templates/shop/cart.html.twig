@@ -8,19 +8,23 @@
 
 {% block body %}
     <div class="cart-container container">
-        <h1>{{ 'cart.overview'|trans }}</h1>
-        <form>
-            <div class="form-group">
-                <label for="destinationSelection">{{ 'cart.shipping'|trans }}</label>
-                <select class="form-control" id="destinationSelection">
-                    {% set destinations = ['fr', 'eu', 'ww'] %}
-                    {% for destination in destinations %}
-                        <option value="{{ destination }}">{{ ('cart.destination.' ~ destination)|trans }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-        </form>
         {% if items is not empty %}
+            <h1>{{ 'cart.overview'|trans }}</h1>
+            <form>
+                <div class="form-group">
+                    <label for="destinationSelection">{{ 'cart.shipping'|trans }}</label>
+                    <select class="form-control" id="destinationSelection">
+                        {% set destinations = ['no_shipping', 'fr', 'eu', 'ww'] %}
+                        {% for destination in destinations %}
+                            <option value="{{ destination }}" {{ destination == 'fr' ? 'selected' }}>{{ ('cart.destination.' ~ destination)|trans }}</option>
+                        {% endfor %}
+                    </select>
+                    <div class="info">
+                        <p>{{ 'shop.no_shipping.description'|trans }}</p>
+                        <p>{{ 'shop.no_shipping.pickup'|trans }}</p>
+                    </div>
+                </div>
+            </form>
             {% for item in items %}
                 <div class="card">
                     <div class="row no-gutters">
@@ -34,6 +38,7 @@
                                 <div class="form-group">
                                     <label for="shipping{{ loop.index }}">Shipping</label>
                                     <select disabled class="form-control" name="shipping{{ loop.index }}" id="shipping{{ loop.index }}">
+                                        <option value="no_shipping" data-price="0" data-destination="no_shipping">{{ 0|format_currency('EUR') }}</option>
                                         {% for destination, price in item.allShippingFees %}
                                             <option {{ destination == 'fr' ? 'selected' }} class="{{ price is null ? 'unavailable' }}" data-price="{{ price }}" data-destination="{{ destination }}" value="{{ destination }}">{{ price ? price|format_currency('EUR') : 0 }}</option>
                                         {% endfor %}
@@ -41,20 +46,26 @@
                                 </div>
                                 <p class="card-text"><small class="text-muted">{{ 'cart.size'|trans }}: {{ item.size }}</small></p>
                                 <hr>
-                                <a href=""><i class="fas fa-trash-alt"></i> {{ 'cart.remove'|trans }}</a>
+                                <button class="delete-item" data-href="{{ path('remote_item_cart', {slug: item.slug}) }}"><i class="fas fa-trash-alt"></i> {{ 'cart.remove'|trans }}</button>
                             </div>
                         </div>
                     </div>
                 </div>
             {% endfor %}
             <div class="total">
-                <p><strong>{{ 'cart.price_details'|trans }}</strong></p>
                 <p class="total-amount"><span>{{ 'cart.total_amount'|trans }}</span><span class="price"></span></p>
-                <a href="" class="checkout btn btn-primary" type="submit">{{ 'cart.checkout'|trans }}</a>
+                <button data-href="{{ absolute_url(path('checkout_session')) }}" data-stripe="{{ stripe_public_key }}" class="checkout btn btn-lg btn-primary" type="submit">{{ 'cart.checkout'|trans }}</button>
             </div>
         {% else %}
-            <div>
-                <p class="alert-info">{{ 'cart.no_items'|trans }}</p>
+            <div class="empty-cart-container">
+                <div class="empty-cart">
+                    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#FF0066" d="M43.8,-56.7C52.4,-45,51.9,-27,53.9,-10.3C55.8,6.4,60.2,21.8,57.2,38.5C54.1,55.1,43.6,72.9,29.6,75.4C15.7,77.9,-1.7,65.2,-15.5,54.8C-29.4,44.5,-39.7,36.7,-47.4,26C-55.2,15.4,-60.5,1.9,-60.5,-12.9C-60.5,-27.6,-55.2,-43.6,-44.3,-54.8C-33.3,-66.1,-16.7,-72.6,0.5,-73.1C17.6,-73.7,35.2,-68.3,43.8,-56.7Z" transform="translate(100 100)" />
+                    </svg>
+                    <i class="fas fa-shopping-basket"></i>
+                </div>
+                <h1>{{ 'cart.no_items'|trans }}</h1>
+                <a href="{{ path('shop_index') }}" class="btn btn-lg btn-primary checkout">{{ 'cart.go_back'|trans }}</a>
             </div>
         {% endif %}
     </div>

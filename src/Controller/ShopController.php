@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Item;
 use App\Repository\ItemRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Liip\ImagineBundle\Imagine\Cache\CacheManager;
@@ -15,6 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -28,6 +28,10 @@ use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
  */
 class ShopController extends AbstractController
 {
+    public const COUTRY_FR = ['FR'];
+    public const COUTRY_EU = ['AT', 'BE', 'BG', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT',
+                    'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'GB'];
+    public const COUTRY_US = ['US'];
     /**
      * @var ItemRepository
      */
@@ -58,21 +62,27 @@ class ShopController extends AbstractController
      */
     private $cacheManager;
 
+    /**
+     * @var SessionInterface
+     */
+    private $session;
+
     public function __construct(
         ItemRepository $repository,
         EntityManagerInterface $entityManager,
         TranslatorInterface $translator,
         SerializerInterface $serializer,
         UploaderHelper $uploaderHelper,
-        CacheManager $cacheManager
-    )
-    {
+        CacheManager $cacheManager,
+        SessionInterface $session
+    ) {
         $this->repository = $repository;
         $this->entityManager = $entityManager;
         $this->translator = $translator;
         $this->serializer = $serializer;
         $this->uploaderHelper = $uploaderHelper;
         $this->cacheManager = $cacheManager;
+        $this->session = $session;
     }
 
     /**
@@ -127,32 +137,39 @@ class ShopController extends AbstractController
     }
 
     /**
-     * @Route("/create-checkout-session/{slug}", name="checkout_session", methods={"GET", "POST"})
+     * @Route("/create-checkout-session", name="checkout_session", methods={"GET", "POST"})
      *
-     * @param string $slug
      * @param Request $request
      *
      * @return JsonResponse
      * @throws ApiErrorException
      */
-    public function checkout(string $slug, Request $request): JsonResponse
+    public function checkout(Request $request): JsonResponse
     {
-        /** @var Item $item */
-        $item = $this->repository->findOneBy(['slug' => $slug]);
-        $checkoutFee = $request->query->get('shipping', true);
+        $slugs = $this->session->get(CartController::CART_SESSION);
+        $checkoutDestination = $request->query->get('shipping', 'fr');
 
-        Stripe::setApiKey($this->getParameter('stripe.api_key'));
-        $session = Session::create([
-            'billing_address_collection' => 'required',
-            'shipping_address_collection' => [
-                'allowed_countries' => [
-                    'AT', 'BE', 'BG', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT',
-                    'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'GB'
-                ],
-            ],
-            'payment_method_types' => ['card'],
-            'line_items' => [
-                [
+        if (!$slugs) {
+            return new JsonResponse([], Response::HTTP_BAD_REQUEST);
+        }
+
+        $items = $this->repository->findBy([
+            'slug' => json_decode($slugs, false),
+            'disabled' => false,
+            'sold' => false
+        ]);
+
+        if (!$items) {
+            return new JsonResponse([], Response::HTTP_BAD_REQUEST);
+        }
+
+        $lineItems = [];
+        $itemSlugs = [];
+
+        foreach ($items as $item) {
+            $itemSlugs[] = $item->getSlug();
+            $shipping = $item->getOneShippingFee($checkoutDestination) * 100;
+            $lineItems[] = [
                     'price_data' => [
                         'currency' => 'eur',
                         'product_data' => [
@@ -161,23 +178,33 @@ class ShopController extends AbstractController
                         'unit_amount' => $item->getPrice() * 100
                     ],
                     'quantity' => 1
-                ],
-                [
+                ];
+
+            $lineItems[] = [
                     'price_data' => [
                         'currency' => 'eur',
                         'product_data' => [
                             'name' => $this->translator->trans('item.shipping_fee', [], 'app')
                         ],
-                        'unit_amount' => ($checkoutFee === true ? $item->getShippingFee() !== null ? $item->getShippingFee() * 100 : 0 : 0)
+                        'unit_amount' => $shipping
                     ],
                     'quantity' => 1
-                ]
+            ];
+        }
+
+        Stripe::setApiKey($this->getParameter('stripe.api_key'));
+        $session = Session::create([
+            'billing_address_collection' => 'required',
+            'shipping_address_collection' => [
+                'allowed_countries' => $this->getAllowedCountries($checkoutDestination),
             ],
+            'payment_method_types' => ['card'],
+            'line_items' => $lineItems,
             'metadata' => [
-                'item-slug' => $item->getSlug()
+                'item-slugs' => json_encode($itemSlugs)
             ],
             'mode' => 'payment',
-            'success_url' => $this->generateUrl('shop_item_sucess', ['slug' => $item->getSlug()], UrlGeneratorInterface::ABSOLUTE_URL),
+            'success_url' => $this->generateUrl('shop_item_sucess', [], UrlGeneratorInterface::ABSOLUTE_URL),
             'cancel_url' => $this->generateUrl('shop_index', [], UrlGeneratorInterface::ABSOLUTE_URL)
         ]);
 
@@ -206,7 +233,6 @@ class ShopController extends AbstractController
 
         $payload = @file_get_contents('php://input');
         $sig_header = $request->headers->get('Stripe-Signature');
-        $event = null;
 
         try {
             $event = Webhook::constructEvent(
@@ -230,27 +256,43 @@ class ShopController extends AbstractController
     }
 
     /**
-     * @Route("/checkout/success/{slug}", name="shop_item_sucess")
+     * @Route("/checkout/success", name="shop_item_sucess")
      *
      * @return Response
      */
-    public function success(string $slug): Response
+    public function success(): Response
     {
-        $item = $this->repository->findOneBy(['slug' => $slug]);
-        if ($item) {
-            $item->setSold(true);
+        $slugs = $this->session->get(CartController::CART_SESSION);
 
-//            $this->mailer->sendEmail([
-//                'to' => 'vincent.durufle@hotmail.fr',
-//                'from' => $this->getParameter('contact_mail'),
-//                'subject' => $this->translator->trans('mail.success.subject', [], 'app'),
-//                'template' => 'shop/success_email.html.twig'
-//            ]);
+        $items = $this->repository->findBy([
+            'slug' => json_decode($slugs, false),
+            'disabled' => false,
+            'sold' => false
+        ]);
+
+        if ($items) {
+            foreach ($items as $item) {
+                $item->setSold(true);
+                $this->entityManager->persist($item);
+            }
+
+            $this->entityManager->flush();
         }
 
-        $this->entityManager->persist($item);
-        $this->entityManager->flush();
+        $this->session->remove(CartController::CART_SESSION);
 
         return $this->render('shop/shop_success.html.twig');
+    }
+
+    private function getAllowedCountries(string $destination): array
+    {
+        if ($destination === 'eu') {
+            return self::COUTRY_EU;
+        }
+        if ($destination === 'ww') {
+            return self::COUTRY_US;
+        }
+
+        return self::COUTRY_FR;
     }
 }

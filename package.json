@@ -11,6 +11,7 @@
         "regenerator-runtime": "^0.13.2",
         "rellax": "^1.12.1",
         "sass-loader": "^9.0.1",
+        "toastify-js": "^1.11.0",
         "webpack-notifier": "^1.6.0"
     },
     "license": "UNLICENSED",

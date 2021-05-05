@@ -28,10 +28,10 @@ use Vich\UploaderBundle\Templating\Helper\UploaderHelper;
  */
 class ShopController extends AbstractController
 {
-    public const COUTRY_FR = ['FR'];
-    public const COUTRY_EU = ['AT', 'BE', 'BG', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT',
+    public const COUNTRY_FR = ['FR'];
+    public const COUNTRY_EU = ['AT', 'BE', 'BG', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT',
                     'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'GB'];
-    public const COUTRY_US = ['US'];
+    public const COUNTRY_WW = ['US', 'CA', 'KR', 'BR'];
     /**
      * @var ItemRepository
      */
@@ -287,12 +287,12 @@ class ShopController extends AbstractController
     private function getAllowedCountries(string $destination): array
     {
         if ($destination === 'eu') {
-            return self::COUTRY_EU;
+            return self::COUNTRY_EU;
         }
         if ($destination === 'ww') {
-            return self::COUTRY_US;
+            return self::COUNTRY_WW;
         }
 
-        return self::COUTRY_FR;
+        return self::COUNTRY_FR;
     }
 }

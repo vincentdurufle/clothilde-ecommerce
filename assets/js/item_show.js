@@ -1,6 +1,6 @@
 require('../scss/item_show.scss');
 import KeenSlider from "keen-slider";
-const $ = require('jquery');
+import Toastify from 'toastify-js';
 
 const addBtn = document.querySelector('.add-item');
 
@@ -19,7 +19,15 @@ const addItem = (e) => {
 
         fetch(e.target.href).then(res => {
             if (res.ok) {
-                $('.toast').toast('show');
+                Toastify({
+                    text: 'Votre article a été ajouté au panier!',
+                    duration: 5000,
+                    gravity: 'top',
+                    close: true,
+                    className: 'notification',
+                    position: 'right',
+                    backgroundColor: "#f9d4df",
+                }).showToast();
                 addBtn.classList.replace('loading', 'btn-success');
                 addBtn.innerHTML = '<i class="far fa-check-circle"></i>';
 
@@ -30,7 +38,15 @@ const addItem = (e) => {
         }).catch(err => {
             console.error(err);
             addBtn.classList.replace('loading', 'error');
-            $('.toast').toast('show');
+            Toastify({
+                text: "An error occured, please refresh the page.",
+                duration: 5000,
+                gravity: "top",
+                close: true,
+                position: "right",
+                className: 'notification',
+                backgroundColor: "#ee7a7a",
+            }).showToast();
         })
     }
 }

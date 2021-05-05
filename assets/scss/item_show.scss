@@ -1,7 +1,7 @@
 @import 'variables';
 @import '~keen-slider/keen-slider.min.css';
 @import '~bootstrap/scss/bootstrap-grid';
-
+@import '~toastify-js/src/toastify.css';
 
 .content {
   padding-top: 0;
@@ -205,11 +205,16 @@
   font-size: 1rem;
 }
 
-.toast {
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
-  .toast-header button {
-    margin-left: auto !important;
+.notification {
+  font-size: 1.25rem;
+  box-shadow: $light-shadow;
+}
+
+.footer {
+  background-color: $blue;
+  margin: 0;
+  padding: 1rem;
+  a:link, a:visited, span {
+    color: $white;
   }
 }

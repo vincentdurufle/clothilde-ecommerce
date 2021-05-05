@@ -24,7 +24,7 @@ nav {
   width: calc(100% - 2rem);
   opacity: .9;
   z-index: 100;
-  transition: .3s;
+  transition: opacity .3s;
   &:hover {
     opacity: 1;
   }

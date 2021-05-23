@@ -1,0 +1,1 @@
+require('../scss/collaboration_index.scss');

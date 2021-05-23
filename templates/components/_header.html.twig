@@ -22,6 +22,9 @@
             <li class="nav-item {{ 'portfolio' in app.request.get('_route') ? 'active' }}">
                 <a class="nav-link" href="{{ path('portfolio_index') }}">{{ 'header.portfolio'|trans }}</a>
             </li>
+            <li class="nav-item {{ 'collaboration' in app.request.get('_route') ? 'active' }}">
+                <a class="nav-link" href="{{ path('collaboration_index') }}">{{ 'header.collaboration'|trans }}</a>
+            </li>
             <li class="nav-item {{ 'about' in app.request.get('_route') ? 'active' }}">
                 <a class="nav-link" href="{{ path('about_index') }}">{{ 'header.about'|trans }}</a>
             </li>

@@ -1,10 +1,11 @@
 @import 'variables';
 @import '~keen-slider/keen-slider.min.css';
 @import '~bootstrap/scss/bootstrap-grid';
-
+@import '~toastify-js/src/toastify.css';
 
 .content {
   padding-top: 0;
+  position: relative;
 }
 
 .item-container {
@@ -168,6 +169,24 @@
     font-weight: bold;
     font-family: $font-family-base;
     color: $white;
+    .spinner-border {
+      display: none;
+    }
+    span {
+      pointer-events: none;
+    }
+    &.loading {
+      cursor: not-allowed;
+      .text {
+        display: none;
+      }
+      .spinner-border {
+        display: inline-block;
+      }
+    }
+    &.success {
+      background-color: #1b9448;
+    }
   }
 }
 
@@ -184,4 +203,18 @@
 .modal-body {
   padding: 2rem;
   font-size: 1rem;
+}
+
+.notification {
+  font-size: 1.25rem;
+  box-shadow: $light-shadow;
+}
+
+.footer {
+  background-color: $blue;
+  margin: 0;
+  padding: 1rem;
+  a:link, a:visited, span {
+    color: $white;
+  }
 }

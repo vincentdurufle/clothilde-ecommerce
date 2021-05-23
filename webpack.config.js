@@ -29,8 +29,6 @@ Encore
     .addEntry('app', './assets/js/app.js')
     .addEntry('homepage', './assets/js/homepage.js')
     .addEntry('admin_index', './assets/js/admin_index.js')
-    .addEntry('index_items', './assets/js/index_items.js')
-    .addEntry('add_item', './assets/js/add_item.js')
     .addEntry('shop_index', './assets/js/shop_index.js')
     .addEntry('shop_checkout', './assets/js/shop_checkout.js')
     .addEntry('item_show', './assets/js/item_show.js')
@@ -38,7 +36,7 @@ Encore
     .addEntry('about', './assets/js/about.js')
     .addEntry('portfolio_index', './assets/js/portfolio_index.js')
     .addEntry('collaboration_index', './assets/js/collaboration_index.js')
-    .addEntry('collaboration_form', './assets/js/collaboration_form.js')
+    .addEntry('cart', './assets/js/cart.js')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()

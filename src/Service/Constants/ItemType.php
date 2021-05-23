@@ -31,6 +31,13 @@ final class ItemType
         self::OTHER
     ];
 
+    public const ALL = [
+         'Mural decoration' => self::MURAL_DECORATION,
+         'Carpet' => self::CARPET,
+         'Pillow' => self::PILLOW,
+         'Other' => self::OTHER
+    ];
+
     public function getValuesTranslated(): array
     {
         $translated = [];

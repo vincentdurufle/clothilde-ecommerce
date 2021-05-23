@@ -23,7 +23,6 @@
         "build": "encore production --progress"
     },
     "dependencies": {
-        "pell": "^1.0.6",
         "vivus": "^0.4.5"
     }
 }

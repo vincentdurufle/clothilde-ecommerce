@@ -143,3 +143,7 @@ cart:
     fr: France
     eu: Europe
     ww: Outside of Europe
+
+collaboration:
+  title: Collaborations
+  no_items: There are no collaborations yet, come back later !

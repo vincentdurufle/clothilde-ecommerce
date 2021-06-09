@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain 'app' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('collaboration_index') }}
+{% endblock %}
+
+{% block body %}
+    <section class="header">
+        <h1>{{ 'collaboration.title'|trans }}</h1>
+        <div class="animation-line">
+            <span class="line"></span>
+            <i class="fas fa-2x fa-circle"></i>
+        </div>
+    </section>
+    <section class="collaborations-container">
+        {% if collaborations is not empty %}
+            {% for collaboration in collaborations %}
+
+            {% endfor %}
+        {% else %}
+            <span class="info">{{ 'collaboration.no_items'|trans }}</span>
+        {% endif %}
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('collaboration_index') }}
+{% endblock %}

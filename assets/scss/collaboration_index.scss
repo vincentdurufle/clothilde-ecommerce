@@ -1,0 +1,54 @@
+@import './variables';
+
+.content {
+  padding-top: 0;
+}
+
+.header {
+  height: 100vh;
+  width: 100%;
+  background-color: $blue;
+  position: relative;
+  h1 {
+    font-size: 4rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: $white;
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+  }
+  .animation-line {
+    position: absolute;
+    left: 15%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 100%;
+    width: 1rem;
+    background-color: $white;
+    .fa-circle {
+      color: $white;
+      position: absolute;
+      font-size: 3rem;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      top: calc(0% + 2rem);
+    }
+  }
+}
+
+.collaborations-container {
+  min-height: calc(100vh - 2rem);
+  display: flex;
+  justify-content: center;
+  .info {
+    align-self: center;
+    font-weight: bold;
+    font-size: 1rem;
+    background-color: darken($blue, 20%);
+    padding: 2rem;
+    color: $white;
+    text-transform: uppercase;
+  }
+}

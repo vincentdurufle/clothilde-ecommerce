@@ -131,3 +131,7 @@ cart:
     fr: France
     eu: Europe
     ww: En dehors de l'Europe
+
+collaboration:
+  title: Collaborations
+  no_items: Il n'y a pas de collaborations actuellement, merci de revenir plus tard !

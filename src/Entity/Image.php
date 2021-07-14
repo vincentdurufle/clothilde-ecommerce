@@ -49,7 +49,7 @@ class Image
 
     /**
      * @ORM\ManyToOne(targetEntity=Collaboration::class, inversedBy="images")
-     * @ORM\JoinColumn(name="item_id", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\JoinColumn(name="collaboration_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $collaboration;
 

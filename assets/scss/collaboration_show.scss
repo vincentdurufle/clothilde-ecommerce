@@ -1,0 +1,64 @@
+@import '~keen-slider/keen-slider.min.css';
+@import 'variables';
+@import '~bootstrap/scss/bootstrap-grid';
+
+$collaboration-color: darken($primary, 20%);
+
+.content {
+  padding-top: 0;
+}
+
+.collaboration-container {
+  width: 100%;
+  min-height: calc(100vh - 2rem);
+  .title {
+    font-size: 3rem;
+    text-align: center;
+    padding: 0 .5rem;
+    color: $white;
+    @include media-breakpoint-down(sm) {
+      font-size: 2.5rem;
+    }
+  }
+  .header {
+    padding: 5rem 0 6rem 0;
+    background-color: $collaboration-color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+
+.carousel {
+  max-width: 600px;
+  width: 100%;
+  padding: 1rem;
+  img {
+    height: 500px;
+    width: 600px;
+    object-fit: contain;
+    @include media-breakpoint-down(sm) {
+      height: 400px;
+    }
+  }
+}
+
+.text {
+  position: relative;
+  background-color: $white;
+  top: -3rem;
+  width: 60vw;
+  font-size: 1.5rem;
+  margin: auto;
+  padding: 2rem;
+  box-shadow: $shadow;
+  @include media-breakpoint-down(sm) {
+    width: 90vw;
+    font-size: 1.25rem;
+  }
+  h1 {
+    font-size: 2rem;
+    text-align: center;
+  }
+}

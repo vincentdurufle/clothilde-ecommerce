@@ -17,7 +17,11 @@
     <section class="collaborations-container">
         {% if collaborations is not empty %}
             {% for collaboration in collaborations %}
-
+                <a href="{{ path('collaboration_show', {'slug': collaboration.slug}) }}" class="collaboration">
+                        <img src="{{ vich_uploader_asset(collaboration, 'coverFile') | imagine_filter('cover') }}"
+                             alt="{{ collaboration.name }}">
+                        <span class="card-title">{{ collaboration.name }}</span>
+                </a>
             {% endfor %}
         {% else %}
             <span class="info">{{ 'collaboration.no_items'|trans }}</span>

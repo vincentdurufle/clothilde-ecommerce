@@ -26,7 +26,7 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Clothilde Ecommerce')
+            ->setTitle('Clotilde Ecommerce')
             ->setFaviconPath('img/favicon.ico')
         ;
     }

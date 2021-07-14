@@ -19,32 +19,33 @@ class ItemRepository extends ServiceEntityRepository
         parent::__construct($registry, Item::class);
     }
 
-    // /**
-    //  * @return Item[] Returns an array of Item objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @return int|mixed|string
+     */
+    public function findByEnabledAndOrdered(): array
     {
         return $this->createQueryBuilder('i')
-            ->andWhere('i.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('i.id', 'ASC')
-            ->setMaxResults(10)
+            ->andWhere('i.disabled = false')
+            ->orderBy('i.createdAt', 'DESC')
             ->getQuery()
             ->getResult()
         ;
     }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?Item
+
+    /**
+     * @param $value
+     * @return array
+     */
+    public function findByTypeOrdered($value): array
     {
         return $this->createQueryBuilder('i')
-            ->andWhere('i.exampleField = :val')
+            ->andWhere('i.type = :val')
+            ->andWhere('i.disabled = false')
+            ->orderBy('i.createdAt', 'DESC')
             ->setParameter('val', $value)
             ->getQuery()
-            ->getOneOrNullResult()
+            ->getResult()
         ;
     }
-    */
 }

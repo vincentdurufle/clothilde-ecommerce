@@ -19,7 +19,6 @@ const initKeenSliders = () => {
         const options = {
             slidesPerView: 3,
             spacing: 15,
-            mode: 'free-snap',
             breakpoints: {
                 '(max-width: 768px)': {
                     slidesPerView: 1,

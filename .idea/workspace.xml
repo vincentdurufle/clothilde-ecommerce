@@ -10,19 +10,19 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb796b33-a08f-485a-8f6b-b920c21568de" name="Default Changelist" comment="remove picture">
-      <change afterPath="$PROJECT_DIR$/assets/js/cart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/cart.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/CartController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/shop/cart.html.twig" afterDir="false" />
+    <list default="true" id="fb796b33-a08f-485a-8f6b-b920c21568de" name="Default Changelist" comment="rm unnecessary">
+      <change afterPath="$PROJECT_DIR$/src/Controller/Admin/CollaborationCrudController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/clothilde-ecommerce.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/clothilde-ecommerce.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/item_show.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/item_show.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/scss/global.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scss/global.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/components/_header.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/components/_header.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/shop/item_show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/shop/item_show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/collaboration_index.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/collaboration_index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/scss/collaboration_index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scss/collaboration_index.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210322201734.php" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/Version20210523162352.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210322203533.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210322211148.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Admin/DashboardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Admin/DashboardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/collaboration/collaboration_index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/collaboration/collaboration_index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/translations/app.en.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/translations/app.en.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/translations/app.fr.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/translations/app.fr.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,6 +167,16 @@
       <path value="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
       <path value="$PROJECT_DIR$/vendor/twig/cssinliner-extra" />
       <path value="$PROJECT_DIR$/vendor/symfony/apache-pack" />
+      <path value="$PROJECT_DIR$/vendor/laminas/laminas-eventmanager" />
+      <path value="$PROJECT_DIR$/vendor/laminas/laminas-code" />
+      <path value="$PROJECT_DIR$/vendor/laminas/laminas-zendframework-bridge" />
+      <path value="$PROJECT_DIR$/vendor/friendsofphp/proxy-manager-lts" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-migrations-bundle" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/migrations" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/deprecations" />
+      <path value="$PROJECT_DIR$/vendor/symfony/uid" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-uuid" />
+      <path value="$PROJECT_DIR$/vendor/easycorp/easyadmin-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1jhPGVPfYC25Xq6rPUBFMF93lXE" />
@@ -175,6 +185,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -245,6 +256,7 @@
       <workItem from="1614969589848" duration="1754000" />
       <workItem from="1615063510183" duration="2801000" />
       <workItem from="1616234611033" duration="10810000" />
+      <workItem from="1621800502506" duration="5992000" />
     </task>
     <task id="LOCAL-00001" summary="dfgdfg">
       <created>1606776382439</created>
@@ -449,7 +461,21 @@
       <option name="project" value="LOCAL" />
       <updated>1615069851420</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="res conf + update">
+      <created>1621784372599</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1621784372599</updated>
+    </task>
+    <task id="LOCAL-00031" summary="rm unnecessary">
+      <created>1621785444390</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1621785444390</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -468,8 +494,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add apache conf" />
-    <MESSAGE value="add responsive" />
     <MESSAGE value="finish refacto + add legals" />
     <MESSAGE value="handle item persist in success page" />
     <MESSAGE value="fix string" />
@@ -493,6 +517,8 @@
     <MESSAGE value="remove parallax" />
     <MESSAGE value="add portfolio eng" />
     <MESSAGE value="fix sliders" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix sliders" />
+    <MESSAGE value="res conf + update" />
+    <MESSAGE value="rm unnecessary" />
+    <option name="LAST_COMMIT_MESSAGE" value="rm unnecessary" />
   </component>
 </project>

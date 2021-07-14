@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain 'app' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('collaboration_show') }}
+{% endblock %}
+
+{% block body %}
+    {% if collaboration is not empty %}
+        <section class="collaboration-container">
+            <div class="header">
+                <h1 class="title">{{ collaboration.name }}</h1>
+                <div id="carouselCollaboration" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        {% for slider in collaboration.images %}
+                            <div class="carousel-item {{ loop.first ? 'active' }}">
+                                <img class="d-block w-100"
+                                     src="{{ vich_uploader_asset(slider, 'imageFile') | imagine_filter('slide') }}"
+                                     alt="{{ collaboration.name }} slide">
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselCollaboration" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselCollaboration" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+            <div class="text">
+                {{ collaboration.text|raw }}
+            </div>
+        </section>
+    {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('collaboration_show') }}
+{% endblock %}

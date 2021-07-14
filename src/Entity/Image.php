@@ -47,6 +47,12 @@ class Image
      */
     private $item;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Collaboration::class, inversedBy="images")
+     * @ORM\JoinColumn(name="collaboration_id", referencedColumnName="id", onDelete="CASCADE")
+     */
+    private $collaboration;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime('now');
@@ -118,6 +124,18 @@ class Image
     public function setItem(?Item $item): self
     {
         $this->item = $item;
+
+        return $this;
+    }
+
+    public function getCollaboration(): ?Collaboration
+    {
+        return $this->collaboration;
+    }
+
+    public function setCollaboration(?Collaboration $collaboration): self
+    {
+        $this->collaboration = $collaboration;
 
         return $this;
     }

@@ -3,6 +3,7 @@ header:
   shop: Shop
   portfolio: Portfolio
   about: About
+  collaboration: Collaborations
 
 homepage:
   hero:
@@ -41,8 +42,9 @@ shop:
 admin:
   menu:
     see_all: See all items
-    invoices: Invoices
-    add_item: Add item
+    see_all_collaborations: See all collaborations
+    add_collaboration: Add new collaboration
+    add_item: Add new item
 
 btn:
   buy: Buy
@@ -141,3 +143,7 @@ cart:
     fr: France
     eu: Europe
     ww: Outside of Europe
+
+collaboration:
+  title: Collaborations
+  no_items: There are no collaborations yet, come back later !

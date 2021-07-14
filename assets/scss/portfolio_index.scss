@@ -110,10 +110,11 @@ body {
     color: #fff;
     font-weight: 500;
     height: 400px;
-    min-height: 400px;
+    width: 100%;
   }
   .img-container {
     height: 400px;
+    width: 100%;
     img {
       object-fit: cover;
       width: auto;
